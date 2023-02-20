@@ -4,47 +4,38 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float speed;
-    public LayerMask enemyMask;
-    Rigidbody2D myBody;
-    Transform myTrans;
-    float myWidth, myHeight;
 
-    void Start() 
-    {
-        myTrans = this.transform;
-        myBody = this.GetComponent<Rigidbody2D>();
-        SpriteRenderer mySprite = this.GetComponent<SpriteRenderer>();
-        myWidth = mySprite.bounds.extents.x;
-        myHeight = mySprite.bounds.extents.y * 0.015f;
-        speed = 5;
-    }
+    public Transform[] patrolPoints;
+    public float moveSpeed;
+    public int patrolDestination;
 
-    void FixedUpdate() 
+    // Update is called once per frame
+    void Update()
     {
 
-        // Check if grounded
-        Vector2 lineCastPosition = myTrans.position + myTrans.right * myWidth;
-        Debug.DrawLine(lineCastPosition, lineCastPosition + Vector2.down*5f);
-        bool isGrounded = Physics2D.Linecast(lineCastPosition, lineCastPosition+Vector2.down, enemyMask);
-        Debug.DrawLine(lineCastPosition, lineCastPosition + myTrans.right.toVector2() * 5f);
-        bool isBlocked = Physics2D.Linecast(lineCastPosition, lineCastPosition + myTrans.right.toVector2()* 1f, enemyMask);
-
-
-
-
-        // Turn around if not grounded, or if blocked
-        if (!isGrounded || isBlocked)
+        if (patrolDestination == 1)
         {
-            Vector3 currentRotation = myTrans.eulerAngles;
-            currentRotation.y += 180;
-            myTrans.eulerAngles = currentRotation;
+            transform.position = Vector2.MoveTowards(transform.position, patrolPoints[1].position, moveSpeed * Time.deltaTime);
+
+            if (Vector2.Distance(transform.position, patrolPoints[1].position) < .2f)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+                patrolDestination = 0;
+            }
         }
 
-        
-        Vector2 myVelocity = myBody.velocity;
-        myVelocity.x = myTrans.right.x * speed;
-        myBody.velocity = myVelocity;
+
+        if (patrolDestination == 0)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, patrolPoints[0].position, moveSpeed * Time.deltaTime);
+
+            if (Vector2.Distance(transform.position, patrolPoints[0].position) < .2f)
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+                patrolDestination = 1;
+            }
+        }
+
 
     }
 }
