@@ -4,20 +4,20 @@ using UnityEngine;
 
 namespace AGD
 {
-    public class WallDestroyer : MonoBehaviour
+    public class ItemDestroyer : MonoBehaviour
     {
-        private GameObject wallDestructionPoint;
+        private GameObject itemDestructionPoint;
         // Start is called before the first frame update
         void Start()
         {
-            wallDestructionPoint = GameObject.Find("PlatformDestructionPoint");
+            itemDestructionPoint = GameObject.Find("ItemDestructionPoint");
         }
 
         // Update is called once per frame
         void Update()
         {
             
-            if (transform.position.y < wallDestructionPoint.transform.position.y)
+            if (transform.position.y < itemDestructionPoint.transform.position.y)
             {
                 gameObject.SetActive(false);
             }
