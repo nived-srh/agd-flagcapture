@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDamage : MonoBehaviour
+public class flyingEnemyDamage : MonoBehaviour
 {
     public PlayerHealth playerHealth;
-    public int damage, enemykbForce;
+
+    [Tooltip("Damage done to the player on physical hit")]
+    public int damage;
+    [Tooltip("Knockback applied to the player on physical hit")]
+    public int enemykbForce;
     public PlayerController playerController;
 
     private void OnCollisionEnter2D(Collision2D collision)

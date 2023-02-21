@@ -3,14 +3,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D playerRb;
-    public float moveSpeed, jumpForce;
+    public float moveSpeed, jumpForce, headJumpForce;
     public float input;
     public SpriteRenderer spriteRenderer;
 
-    public LayerMask groundLayer;
-    private bool isGrounded;
+    public LayerMask groundLayer, headLayer;
+    private bool isGrounded, isOnHead;
     public Transform feetPosition;
-    public float groundCheckCircle;
+    public float groundCheckCircle, headCheckCircle;
     public float kbForce, kbCounter, kbTotalTime;
     public bool knockFromRight;
 
@@ -29,6 +29,12 @@ public class PlayerController : MonoBehaviour
         }
 
         isGrounded = Physics2D.OverlapCircle(feetPosition.position, groundCheckCircle, groundLayer);
+        isOnHead = Physics2D.OverlapCircle(feetPosition.position, headCheckCircle, headLayer);
+
+        if (isOnHead == true)
+        {
+            playerRb.velocity = Vector2.up * headJumpForce;
+        }
 
 
         if (isGrounded == true && Input.GetButton("Jump"))
