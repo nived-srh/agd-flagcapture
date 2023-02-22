@@ -69,7 +69,7 @@ namespace AGD
 
                         Debug.Log(layoutArray[i][j]);
                         GameObject platformObj = platformObjectPools[layoutArray[i][j]].GetPooledObject();
-                        platformObj.transform.position = new Vector3((xPositionOffset + (j * 10)), transform.position.y + platformPositionOffset[layoutArray[i][j]].y, transform.position.z);
+                        platformObj.transform.position = new Vector3((xPositionOffset + (j * 10)), transform.position.y + platformPositionOffset[layoutArray[i][j]].y, platformObjectPools[i].pooledObject.transform.position.z);
                         platformObj.SetActive(true);
                     }
 
