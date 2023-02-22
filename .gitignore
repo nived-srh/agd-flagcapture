@@ -11,6 +11,9 @@ Temp# This .gitignore file should be placed at the root of your Unity project di
 /[Uu]ser[Ss]ettings/
 References/
 
+# References folder contains additional assets data -- can be stored locally
+/References/
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
