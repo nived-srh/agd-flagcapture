@@ -16,7 +16,10 @@ namespace AGD
         // Start is called before the first frame update
         void Start()
         {
-        
+            GameObject sideWall = theObjectPool.GetPooledObject();
+            sideWall.transform.position = new Vector3(transform.position.x + 20, transform.position.y + 20, transform.position.z);
+            sideWall.SetActive(true);
+            transform.position = new Vector3(transform.position.x, transform.position.y + wallGap + 20, transform.position.z);
         }
 
         // Update is called once per frame
