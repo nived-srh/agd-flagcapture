@@ -9,6 +9,7 @@ Temp# This .gitignore file should be placed at the root of your Unity project di
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
+References/
 
 # References folder contains additional assets data -- can be stored locally
 /References/
