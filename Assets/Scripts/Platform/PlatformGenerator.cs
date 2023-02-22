@@ -6,7 +6,6 @@ namespace AGD
 {
     public class PlatformGenerator : MonoBehaviour
     {
-        public GameObject thePlatform;
         public Transform generationPoint;
         public float xPositionOffset;
         public float yPositionOffset;
@@ -14,19 +13,27 @@ namespace AGD
         public int platformLayoutColumns;
         public int platformLayoutRows;
 
-        public ObjectPooler[] theObjectPools;
+        public ObjectPooler[] platformObjectPools;
         private int numberOfPlatformTypes;
 
         private int platformSelector;
         private int[][] layoutArray;
         private int[] prevGeneratedLayoutRow;
+        private Vector2[] platformPositionOffset;
 
         // Start is called before the first frame update
         void Start()
         {
             layoutArray = new int[platformLayoutRows][];
             prevGeneratedLayoutRow = new int[platformLayoutColumns];
-            numberOfPlatformTypes = theObjectPools.Length;
+
+            numberOfPlatformTypes = platformObjectPools.Length;
+            platformPositionOffset = new Vector2[numberOfPlatformTypes];
+
+            for (int i = 0; i < platformObjectPools.Length; i++)
+            {
+                platformPositionOffset[i] = new Vector2( platformObjectPools[i].pooledObject.GetComponent<BoxCollider2D>().size.x, platformObjectPools[i].pooledObject.GetComponent<BoxCollider2D>().size.y / 2 );
+            }
         }
 
         // Update is called once per frame
@@ -54,15 +61,15 @@ namespace AGD
                 {
                     layoutArray[i][j] = 0;
                     bool hasPlatform = Random.Range(0f, 1f) > 0.5;
-                    //int platformType = (int)Random.Range(0, numberOfPlatformTypes);
 
                     if (hasPlatform)
                     {
-                        layoutArray[i][j] = (int)Random.Range(0, numberOfPlatformTypes - 0.0000001f); //platformType;
+                        layoutArray[i][j] = (int)Random.Range(0, numberOfPlatformTypes - 0.0000001f);
                         itemsInRow += 1;
 
-                        GameObject platformObj = theObjectPools[layoutArray[i][j]].GetPooledObject();
-                        platformObj.transform.position = new Vector3((xPositionOffset + (j * 10)), transform.position.y, transform.position.z);
+                        Debug.Log(layoutArray[i][j]);
+                        GameObject platformObj = platformObjectPools[layoutArray[i][j]].GetPooledObject();
+                        platformObj.transform.position = new Vector3((xPositionOffset + (j * 10)), transform.position.y + platformPositionOffset[layoutArray[i][j]].y, transform.position.z);
                         platformObj.SetActive(true);
                     }
 
