@@ -1496,7 +1496,7 @@ MonoBehaviour:
   generationPoint: {fileID: 2066041489}
   xPositionOffset: -35
   yPositionOffset: 10
-  platformLayoutColumns: 7
+  platformLayoutColumns: 8
   platformLayoutRows: 4
   platformObjectPools:
   - {fileID: 687936818}
