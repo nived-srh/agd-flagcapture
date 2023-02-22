@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace AGD
 {
@@ -18,6 +19,9 @@ namespace AGD
         private Animator anim;
 
         private enum MovementState { idle, running, jumping, falling }
+        private MovementState state;
+
+        // private float inputX;
         
         // Start is called before the first frame update
         private void Start()
@@ -70,5 +74,63 @@ namespace AGD
 
             anim.SetInteger("state", (int)state);
         }
+
+        // public void Move(InputAction.CallbackContext context)
+        // {
+        //     MovementState state;
+        //     if (context.performed)
+        //     {
+        //         float inputX = context.ReadValue<Vector2>().x;
+        //         if (inputX < 0)
+        //         {
+        //             sprite.flipX = true;
+        //         }
+        //         else if (inputX > 0)
+        //         {
+        //             sprite.flipX = false;
+        //         }
+        //         rb.velocity = new Vector2(inputX * moveSpeed, rb.velocity.y);
+                
+        //         if (rb.velocity.x != 0)
+        //         {
+        //             state = MovementState.running;
+        //         }
+        //         else
+        //         {
+        //             state = MovementState.idle;
+        //         }
+        //     }
+
+        //     else { state = MovementState.idle; }
+
+        //     anim.SetInteger("state", (int)state);
+        // }
+
+        // public void Jump(InputAction.CallbackContext context)
+        // {
+        //     MovementState state;
+
+        //     if (context.performed)
+        //     {
+        //         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        //         if (rb.velocity.y > 0)
+        //         {
+        //             state = MovementState.jumping;
+        //             if (rb.velocity.y < 0)
+        //             {
+        //                 state = MovementState.falling;
+        //             }
+        //         }
+        //         else
+        //         {
+        //             state = MovementState.falling;
+        //         }
+        //     }
+
+        //     else { state = MovementState.idle; }
+
+        //     anim.SetInteger("state", (int)state);
+            
+        // }
     }
 }
