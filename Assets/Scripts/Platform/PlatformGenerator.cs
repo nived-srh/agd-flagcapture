@@ -60,7 +60,7 @@ namespace AGD
                 for (int j = 0; j < layoutArray[i].Length; j++)
                 {
                     layoutArray[i][j] = 0;
-                    bool hasPlatform = true ;//Random.Range(0f, 1f) > 0.5;
+                    bool hasPlatform = Random.Range(0f, 1f) > ( 0.5 + itemsInRow/ 10.0) ;
 
                     if (hasPlatform)
                     {
