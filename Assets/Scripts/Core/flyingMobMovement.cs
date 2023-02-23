@@ -6,103 +6,76 @@ using UnityEngine;
 public class flyingMobMovement : MonoBehaviour
 {
 
-    public Transform[] patrolPoints;
-    public float moveSpeed = 0f, baseSpeed;
-    public int patrolDestination;
-    public Transform playerTransform, obstacle;
-    public bool isChasing;
-    public float chaseDistance;
-    public bool isClose;
+    // public Transform[] patrolPoints;
+    // public int patrolDestination;
+
+    // public Transform obstacle;
+    // public bool isChasing;
+    // public float chaseDistance;
+    // public bool isClose;
+    // public Transform playerTransform;
+    public Transform feetPosition, middlePosition;
     private Rigidbody2D rb;
+    private bool isGrounded, isBlocked;
+    public float moveSpeed, groundCheckDistance = 3f;
+    public LayerMask platformLayer;
+    public int scale = 1;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        moveSpeed = baseSpeed;
+        rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Check if the enemy is moving to the right and flip enemy to the right
-        if (rb.velocity.x > 0)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
 
-        // Check if the enemy is moving to the left and flip enemy to the left
-        if (rb.velocity.x < 0)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
+        // // Check if the enemy is moving to the right and flip enemy to the right
+        // if (rb.velocity.x > 0)
+        // {
+        //     transform.localScale = new Vector3(1, 1, 1);
+        // }
 
-        //Check if player is close to start attack animation
-        if (Vector2.Distance(transform.position, playerTransform.position) > 1)
-        {
-            isClose = false;
-        }
-        else if (Vector2.Distance(transform.position, playerTransform.position) <= 1)
-        {
-            isClose = true;
-        }
+        // // Check if the enemy is moving to the left and flip enemy to the left
+        // if (rb.velocity.x < 0)
+        // {
+        //     transform.localScale = new Vector3(-1, 1, 1);
+        // }
 
-        // Check if enemy is close to player and disable speed to not push character back
-        float distancex = Mathf.Abs(transform.position.x - playerTransform.transform.position.x);
-        Debug.Log(distancex);
-        if (distancex <= 1.5)
+        //Check if above a platform
+        Debug.DrawRay(middlePosition.position, Vector2.down * groundCheckDistance, Color.white);
+        RaycastHit2D hit = Physics2D.Raycast(feetPosition.position, Vector2.down, groundCheckDistance, platformLayer);
+        if (hit.collider != null)
         {
-            moveSpeed = 0f;
+            isGrounded = true;
         }
         else
         {
-            moveSpeed = baseSpeed;
+            isGrounded = false;
         }
 
-        //Make enemy chase player based on vertical distance
-        float distance = Mathf.Abs(transform.position.y - playerTransform.transform.position.y);
-        if (distance <= chaseDistance)
+        //Check if blocked
+        Debug.DrawRay(middlePosition.position, Vector2.right * 1f, Color.white);
+        RaycastHit2D hitWall = Physics2D.Raycast(middlePosition.position, Vector2.right, 1f, platformLayer);
+
+        if (hitWall.collider != null)
         {
-            isChasing = true;
+            isBlocked = true;
         }
         else
         {
-            isChasing = false;
-            moveSpeed = baseSpeed; //Re-enables base speed if enemy is too close to character and the speed is disabled
+            isBlocked = false;
         }
 
-        //Make enemy chase player if isChasing is true, or else go back to patrolling position;
-        if (isChasing)
+        if (!isGrounded || isBlocked)
         {
-            Vector3 playerDirection = (playerTransform.position - transform.position).normalized;
-            rb.velocity = playerDirection * moveSpeed;
+            scale *= -1;
+            transform.localScale = new Vector3(scale, 1, 1);
+            moveSpeed *= -1;
+            rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+
         }
-        else
-        {
-
-            // Move to patrol destination 1
-            if (patrolDestination == 1)
-            {
-                Vector3 patrol1Destination = (patrolPoints[1].position - transform.position).normalized;
-                rb.velocity = patrol1Destination * moveSpeed;
-                //Go to patrol destination 0 if close to patrol destination 1
-                if (Vector2.Distance(transform.position, patrolPoints[1].position) < .2f)
-                {
-                    patrolDestination = 0;
-                }
-            }
-
-            //Move to patrol destionation 0
-            if (patrolDestination == 0)
-            {
-                Vector3 patrol0Destination = (patrolPoints[0].position - transform.position).normalized;
-                rb.velocity = patrol0Destination * moveSpeed;
-                //Go to patrol destination 1 if close to patrol destination 0
-                if (Vector2.Distance(transform.position, patrolPoints[0].position) < .2f)
-                {
-                    patrolDestination = 1;
-                }
-            }
-        }
-
     }
 }

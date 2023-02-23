@@ -10,13 +10,15 @@ public class ProjectileShooting : MonoBehaviour
     private GameObject player;
     [Tooltip("Vertical distance checked to enable shooting projectiles to the player")]
     public float distanceCheck;
-    
+    private Animator animator;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -24,8 +26,6 @@ public class ProjectileShooting : MonoBehaviour
     {
 
         float distance = Mathf.Abs(transform.position.y - player.transform.position.y);
-        
-        Debug.Log(distance);
 
         if (distance <= distanceCheck)
         {
@@ -38,11 +38,18 @@ public class ProjectileShooting : MonoBehaviour
             }
         }
 
-
     }
 
     void shoot()
     {
+        animator.Play("attack");
         Instantiate(bullet, bulletPos.position, Quaternion.identity);
+        StartCoroutine(ResetAnimation());
+    }
+
+    IEnumerator ResetAnimation()
+    {
+        yield return new WaitForSeconds(0.33f);
+        animator.Play("fly");
     }
 }

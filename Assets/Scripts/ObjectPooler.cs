@@ -37,10 +37,10 @@ namespace AGD
                 }
             }
 
-            Debug.Log("New Object Creation");
             GameObject obj = (GameObject)Instantiate(pooledObject);
             obj.SetActive(false);
             pooledObjects.Add(obj);
+            obj.layer = 3;
             return obj;
         }
     }

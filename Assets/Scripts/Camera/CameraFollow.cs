@@ -6,14 +6,14 @@ namespace AGD
 {
     public class CameraFollow : MonoBehaviour
     {
-        public PlayerMovement thePlayer;
+        public GameObject thePlayer;
         public int minYForFollow;
         private Vector3 lastPlayerPosition;
         private float distanceToMove;
         // Start is called before the first frame update
         void Start()
         {
-            thePlayer = FindAnyObjectByType<PlayerMovement>();
+            thePlayer = GameObject.FindGameObjectWithTag("Player");
             lastPlayerPosition = thePlayer.transform.position;
         }
 
