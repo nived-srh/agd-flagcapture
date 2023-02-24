@@ -14,23 +14,26 @@ public class flyingMobMovement : MonoBehaviour
     // public float chaseDistance;
     // public bool isClose;
     // public Transform playerTransform;
-    public Transform feetPosition, middlePosition;
+    public Transform feetPosition, middlePosition, middlePositionRight;
     private Rigidbody2D rb;
     private bool isGrounded, isBlocked;
     public float moveSpeed, groundCheckDistance = 3f;
     public LayerMask platformLayer;
     public int scale = 1;
+    float rayDirectionRight = 0.1f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
 
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
 
         // // Check if the enemy is moving to the right and flip enemy to the right
         // if (rb.velocity.x > 0)
@@ -56,11 +59,14 @@ public class flyingMobMovement : MonoBehaviour
             isGrounded = false;
         }
 
+        
+        
         //Check if blocked
-        Debug.DrawRay(middlePosition.position, Vector2.right * 1f, Color.white);
-        RaycastHit2D hitWall = Physics2D.Raycast(middlePosition.position, Vector2.right, 1f, platformLayer);
+        Vector2 rayDirection = new Vector2(rayDirectionRight, 0);
+        Debug.DrawRay(middlePositionRight.position, rayDirection * 1f, Color.white);
+        RaycastHit2D hitWallRight = Physics2D.Raycast(middlePositionRight.position, rayDirection, 1f, platformLayer);
 
-        if (hitWall.collider != null)
+        if (hitWallRight.collider != null)
         {
             isBlocked = true;
         }
@@ -75,7 +81,7 @@ public class flyingMobMovement : MonoBehaviour
             transform.localScale = new Vector3(scale, 1, 1);
             moveSpeed *= -1;
             rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
-
+            rayDirectionRight *= -1;
         }
     }
 }
