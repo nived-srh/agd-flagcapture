@@ -193,7 +193,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 8}
+  m_Size: {x: 2.32, y: 8}
   m_EdgeRadius: 0
 --- !u!1 &3988921180828420898 stripped
 GameObject:
@@ -224,7 +224,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 8}
+  m_Size: {x: 2.32, y: 8}
   m_EdgeRadius: 0
 --- !u!1 &6401245858091011952 stripped
 GameObject:
@@ -255,7 +255,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 8}
+  m_Size: {x: 2.32, y: 8}
   m_EdgeRadius: 0
 --- !u!1 &7697295480482030924 stripped
 GameObject:
@@ -286,7 +286,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 8}
+  m_Size: {x: 2.32, y: 8}
   m_EdgeRadius: 0
 --- !u!1 &8344189702080029245 stripped
 GameObject:
@@ -317,7 +317,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 8}
+  m_Size: {x: 2.32, y: 8}
   m_EdgeRadius: 0
 --- !u!1001 &7222184387083847930
 PrefabInstance:
@@ -429,7 +429,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 8}
+  m_Size: {x: 2.32, y: 8}
   m_EdgeRadius: 0
 --- !u!4 &583542874894756507 stripped
 Transform:
@@ -465,7 +465,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 8}
+  m_Size: {x: 2.32, y: 8}
   m_EdgeRadius: 0
 --- !u!1 &6771967009622147116 stripped
 GameObject:
@@ -496,7 +496,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 8}
+  m_Size: {x: 2.32, y: 8}
   m_EdgeRadius: 0
 --- !u!1 &7111240551254219712 stripped
 GameObject:
@@ -527,7 +527,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 8}
+  m_Size: {x: 2.32, y: 8}
   m_EdgeRadius: 0
 --- !u!1 &7546576007292248896 stripped
 GameObject:
@@ -558,5 +558,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 8}
+  m_Size: {x: 2.32, y: 8}
   m_EdgeRadius: 0
