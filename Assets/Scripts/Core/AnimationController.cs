@@ -11,16 +11,24 @@ public class AnimationController : MonoBehaviour
 
     private void Update()
     {
+
+
+
         float distance = Vector3.Distance(transform.position, targetObject.position);
 
 
         if (distance <= distanceThreshold)
         {
-            animator.Play(attack);
+            animator.Play("attack");
         }
         else
         {
-            animator.Play(walk);
+            animator.Play("walk");
         }
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        
     }
 }
