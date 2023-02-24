@@ -193,7 +193,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.32, y: 8}
+  m_Size: {x: 2.12, y: 8}
   m_EdgeRadius: 0
 --- !u!1 &3988921180828420898 stripped
 GameObject:
@@ -224,7 +224,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.32, y: 8}
+  m_Size: {x: 2.12, y: 8}
   m_EdgeRadius: 0
 --- !u!1 &6401245858091011952 stripped
 GameObject:
@@ -255,7 +255,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.32, y: 8}
+  m_Size: {x: 2.12, y: 8}
   m_EdgeRadius: 0
 --- !u!1 &7697295480482030924 stripped
 GameObject:
@@ -286,7 +286,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.32, y: 8}
+  m_Size: {x: 2.12, y: 8}
   m_EdgeRadius: 0
 --- !u!1 &8344189702080029245 stripped
 GameObject:
@@ -317,7 +317,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.32, y: 8}
+  m_Size: {x: 2.12, y: 8}
   m_EdgeRadius: 0
 --- !u!1001 &7222184387083847930
 PrefabInstance:
@@ -334,6 +334,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1130429513196916988, guid: 5d70e5f7f80976d478f22ed0b5f0383c, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3364397450592398453, guid: 5d70e5f7f80976d478f22ed0b5f0383c, type: 3}
       propertyPath: m_Name
       value: LeftWall
@@ -346,9 +350,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4183488071906341523, guid: 5d70e5f7f80976d478f22ed0b5f0383c, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5060051405055180632, guid: 5d70e5f7f80976d478f22ed0b5f0383c, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5612343843080388805, guid: 5d70e5f7f80976d478f22ed0b5f0383c, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7357682616287409761, guid: 5d70e5f7f80976d478f22ed0b5f0383c, type: 3}
+      propertyPath: m_Size.x
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7792198534560653921, guid: 5d70e5f7f80976d478f22ed0b5f0383c, type: 3}
       propertyPath: m_RootOrder
@@ -398,6 +414,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8995867630702831273, guid: 5d70e5f7f80976d478f22ed0b5f0383c, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d70e5f7f80976d478f22ed0b5f0383c, type: 3}
 --- !u!1 &577068598601452086 stripped
@@ -429,7 +449,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.32, y: 8}
+  m_Size: {x: 2.13, y: 8}
   m_EdgeRadius: 0
 --- !u!4 &583542874894756507 stripped
 Transform:
@@ -465,7 +485,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.32, y: 8}
+  m_Size: {x: 2.13, y: 8}
   m_EdgeRadius: 0
 --- !u!1 &6771967009622147116 stripped
 GameObject:
@@ -496,7 +516,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.32, y: 8}
+  m_Size: {x: 2.13, y: 8}
   m_EdgeRadius: 0
 --- !u!1 &7111240551254219712 stripped
 GameObject:
@@ -527,7 +547,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.32, y: 8}
+  m_Size: {x: 2.13, y: 8}
   m_EdgeRadius: 0
 --- !u!1 &7546576007292248896 stripped
 GameObject:
@@ -558,5 +578,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.32, y: 8}
+  m_Size: {x: 2.13, y: 8}
   m_EdgeRadius: 0

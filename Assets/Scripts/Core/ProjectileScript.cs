@@ -1,4 +1,4 @@
-    using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,14 +14,15 @@ public class ProjectileScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
-
         Vector3 direction = player.transform.position - transform.position;
-        rb.velocity = new Vector2(direction.x, direction.y).normalized * force; 
+        rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
         timer += Time.deltaTime;
 
         if (timer > 10)
@@ -30,12 +31,12 @@ public class ProjectileScript : MonoBehaviour
         }
     }
 
-     void OnTriggerEnter2D(Collider2D other)
-     {
+    void OnTriggerEnter2D(Collider2D other)
+    {
         if (other.gameObject.CompareTag("Player"))
         {
             other.gameObject.GetComponent<PlayerHealth>().currentHealth -= 5;
             Destroy(gameObject);
         }
-     }
+    }
 }
