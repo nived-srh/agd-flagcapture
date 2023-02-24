@@ -2949,7 +2949,7 @@ SpriteRenderer:
   m_Size: {x: 1.1, y: 1.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1669906833
@@ -2980,7 +2980,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33b4041cb05226d49bf81188f15ba5ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 310020415}
   maxHealth: 100
   currentHealth: 0
 --- !u!114 &1669906835
@@ -3008,6 +3007,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   feetPosition: {fileID: 14474360}
+  groundCheckCircle: 0
+  headCheckCircle: 0
   kbForce: 12
   kbCounter: 0
   kbTotalTime: 0.2

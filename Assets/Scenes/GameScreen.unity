@@ -404,7 +404,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 43157032}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -40, z: 9.600959}
+  m_LocalPosition: {x: 0, y: 0, z: 9.600959}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -474,8 +474,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: befbaa581cf8a4b5ea8f4c968f827e31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
-  jumpForce: 14
+  moveSpeed: 15
+  jumpForce: 22
   left: 97
   right: 100
   jump: 32
@@ -3234,6 +3234,14 @@ PrefabInstance:
     - target: {fileID: 2805907496160769377, guid: 908b1788d8505d24d971c5a598615014, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805907496160769379, guid: 908b1788d8505d24d971c5a598615014, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805907496160769437, guid: 908b1788d8505d24d971c5a598615014, type: 3}
+      propertyPath: moveSpeed
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2805907496160769438, guid: 908b1788d8505d24d971c5a598615014, type: 3}
       propertyPath: playerHealth
