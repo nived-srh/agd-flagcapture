@@ -67,7 +67,6 @@ namespace AGD
                         layoutArray[i][j] = (int)Random.Range(0, numberOfPlatformTypes - 0.0000001f);
                         itemsInRow += 1;
 
-                        Debug.Log(layoutArray[i][j]);
                         GameObject platformObj = platformObjectPools[layoutArray[i][j]].GetPooledObject();
                         platformObj.transform.position = new Vector3((xPositionOffset + (j * 10)), transform.position.y + platformPositionOffset[layoutArray[i][j]].y, platformObjectPools[i].pooledObject.transform.position.z);
                         platformObj.SetActive(true);
@@ -87,7 +86,6 @@ namespace AGD
             }
 
             layoutStr += " ]";
-            Debug.Log(layoutStr);
 
         }
     }

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7532821346817405312}
   - component: {fileID: 7532821346817405313}
   - component: {fileID: 7532821346817405314}
-  - component: {fileID: 7532821346817405315}
   - component: {fileID: 7532821346817405326}
   m_Layer: 0
   m_Name: P1
@@ -135,23 +134,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.2, y: 7.588319}
   m_EdgeRadius: 0
---- !u!114 &7532821346817405315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7532821346817405316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: befbaa581cf8a4b5ea8f4c968f827e31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 15
-  jumpForce: 20
-  left: 97
-  right: 100
-  jump: 119
 --- !u!95 &7532821346817405326
 Animator:
   serializedVersion: 5

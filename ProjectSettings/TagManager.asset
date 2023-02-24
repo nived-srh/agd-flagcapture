@@ -9,6 +9,8 @@ TagManager:
   - Background
   - Obstacle
   - Mob
+  - Clone
+  - flyingenemy_01_projectile
   layers:
   - Default
   - TransparentFX
@@ -16,8 +18,8 @@ TagManager:
   - Platform
   - Water
   - UI
-  - 
-  - 
+  - Head
+  - Player
   - 
   - 
   - 

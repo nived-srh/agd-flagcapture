@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 8855089474749922753}
   m_Layer: 0
   m_Name: main_lev_build_62 (2)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 433149950240893405}
   m_Layer: 0
   m_Name: main_lev_build_62 (3)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
