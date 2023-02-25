@@ -14,7 +14,7 @@ public class flyingMobMovement : MonoBehaviour
     // public float chaseDistance;
     // public bool isClose;
     // public Transform playerTransform;
-    public Transform feetPosition, middlePosition, middlePositionRight;
+    public Transform feetPosition, middlePositionRight;
     private Rigidbody2D rb;
     private bool isGrounded, isBlocked;
     public float moveSpeed, groundCheckDistance = 3f;
@@ -48,6 +48,7 @@ public class flyingMobMovement : MonoBehaviour
         rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
 
         //Check if above a platform
+        Debug.DrawRay(feetPosition.position, Vector3.down, Color.yellow);
         RaycastHit2D hit = Physics2D.Raycast(feetPosition.position, Vector2.down, groundCheckDistance, platformLayer);
         if (hit.collider != null)
         {
@@ -61,10 +62,12 @@ public class flyingMobMovement : MonoBehaviour
 
 
         //Check if blocked
+        
         Vector2 rayDirection = new Vector2(rayDirectionRight, 0);
-        RaycastHit2D hitWallRight = Physics2D.Raycast(middlePositionRight.position, rayDirection, 1f, platformLayer);
+        Debug.DrawRay(middlePositionRight.position, rayDirection, Color.yellow);
+        RaycastHit2D hitWallRight = Physics2D.Raycast(middlePositionRight.position, rayDirection, 1f);
 
-        if (hitWallRight.collider != null)
+        if (hitWallRight.collider != null && hitWallRight.collider.CompareTag("Platform"))
         {
             isBlocked = true;
         }

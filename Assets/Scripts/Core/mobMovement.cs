@@ -24,7 +24,6 @@ public class mobMovement : MonoBehaviour
     public float moveSpeed;
     private Rigidbody2D rb;
     Animator animator;
-    private float timer;
 
 
     void Start()

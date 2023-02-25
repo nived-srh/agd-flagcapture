@@ -49,7 +49,7 @@ public class ProjectileShooting : MonoBehaviour
 
     IEnumerator ResetAnimation()
     {
-        yield return new WaitForSeconds(0.33f);
+        yield return new WaitForSeconds(0.1f);
         animator.Play("fly");
     }
 }

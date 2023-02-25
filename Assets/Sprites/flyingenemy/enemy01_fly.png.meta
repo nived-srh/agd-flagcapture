@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bb10d8c8f96a27d44bbd2f46f9bf6f44
+guid: 25db8767b34970e4488f0049ab2a0558
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,148 +105,148 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: flyinganimation_0
+      name: enemy01_fly_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 46
+        x: 2
+        y: 74
         width: 29
         height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 8
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27b5de96f90ca104a861350caf3ffc85
-      internalID: -1955795227
+      spriteID: 9d5b8ee661e48e64f8486a3d28115b93
+      internalID: -1949620838
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flyinganimation_1
+      name: enemy01_fly_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 47
+        x: 36
+        y: 75
         width: 29
         height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 8
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96f1997a43ed0384d881af76a278da54
-      internalID: 1040633034
+      spriteID: 7154df4f0ccc73d498916f473407161a
+      internalID: 1309209197
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flyinganimation_2
+      name: enemy01_fly_2
       rect:
         serializedVersion: 2
-        x: 63
-        y: 47
+        x: 70
+        y: 75
         width: 29
         height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 8
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6271bcd2de3b04d4e941e79bd08d9d7f
-      internalID: -89289112
+      spriteID: ba547aec140627b43a5d7d926da52a92
+      internalID: -778072601
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flyinganimation_3
+      name: enemy01_fly_3
       rect:
         serializedVersion: 2
-        x: 32
-        y: 25
+        x: 2
+        y: 42
         width: 29
         height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 8
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d47020c44fe098499bf4e98a42a8c5a
-      internalID: -1333598322
+      spriteID: 6c550f10548f9b64caf9922e3c136c51
+      internalID: -333774140
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flyinganimation_4
+      name: enemy01_fly_4
       rect:
         serializedVersion: 2
-        x: 63
-        y: 22
+        x: 36
+        y: 42
+        width: 29
+        height: 20
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a7d34ee989cd9b4abe7360833419c22
+      internalID: 928810149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy01_fly_5
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 41
+        width: 29
+        height: 22
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1e58eb0c2647564a953e4383504a05e
+      internalID: -1491242687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy01_fly_6
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 6
         width: 29
         height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 8
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3121e8d5faac2b244a26b087f6b76d66
-      internalID: -2218813
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: flyinganimation_5
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 3
-        width: 29
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c19bc2beebf8b2745aac93ec9ab98452
-      internalID: 1634376426
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: flyinganimation_6
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 1
-        width: 29
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4dde6e49f1363d84db31f7cdb24f7587
-      internalID: 1691475601
+      spriteID: 1a8c9ad0a29f45a4699caeff0e85912e
+      internalID: 1175676169
       vertices: []
       indices: 
       edges: []
@@ -262,13 +262,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      flyinganimation_4: -2218813
-      flyinganimation_2: -89289112
-      flyinganimation_0: -1955795227
-      flyinganimation_6: 1691475601
-      flyinganimation_5: 1634376426
-      flyinganimation_3: -1333598322
-      flyinganimation_1: 1040633034
+      enemy01_fly_4: 928810149
+      enemy01_fly_2: -778072601
+      enemy01_fly_6: 1175676169
+      enemy01_fly_1: 1309209197
+      enemy01_fly_3: -333774140
+      enemy01_fly_5: -1491242687
+      enemy01_fly_0: -1949620838
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
