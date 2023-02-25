@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -6929632468783365721}
   m_Layer: 3
   m_Name: Platform 4 x 3
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,9 +85,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3051284760106041543, guid: 7d91f1597b5aec647ae6e194fbf6bdbe, type: 3}
+      propertyPath: m_TagString
+      value: Platform
+      objectReference: {fileID: 0}
     - target: {fileID: 4890492569557323099, guid: 7d91f1597b5aec647ae6e194fbf6bdbe, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4890492569557323099, guid: 7d91f1597b5aec647ae6e194fbf6bdbe, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     - target: {fileID: 5853896915903203854, guid: 7d91f1597b5aec647ae6e194fbf6bdbe, type: 3}
       propertyPath: m_Name
@@ -96,6 +104,10 @@ PrefabInstance:
     - target: {fileID: 5853896915903203854, guid: 7d91f1597b5aec647ae6e194fbf6bdbe, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5853896915903203854, guid: 7d91f1597b5aec647ae6e194fbf6bdbe, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     - target: {fileID: 6471113251401408165, guid: 7d91f1597b5aec647ae6e194fbf6bdbe, type: 3}
       propertyPath: m_RootOrder
@@ -145,6 +157,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7172549366192724255, guid: 7d91f1597b5aec647ae6e194fbf6bdbe, type: 3}
+      propertyPath: m_TagString
+      value: Platform
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d91f1597b5aec647ae6e194fbf6bdbe, type: 3}
 --- !u!4 &6788657758386724584 stripped
@@ -163,9 +179,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3051284760106041543, guid: 7d91f1597b5aec647ae6e194fbf6bdbe, type: 3}
+      propertyPath: m_TagString
+      value: Platform
+      objectReference: {fileID: 0}
     - target: {fileID: 4890492569557323099, guid: 7d91f1597b5aec647ae6e194fbf6bdbe, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4890492569557323099, guid: 7d91f1597b5aec647ae6e194fbf6bdbe, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     - target: {fileID: 5853896915903203854, guid: 7d91f1597b5aec647ae6e194fbf6bdbe, type: 3}
       propertyPath: m_Name
@@ -174,6 +198,10 @@ PrefabInstance:
     - target: {fileID: 5853896915903203854, guid: 7d91f1597b5aec647ae6e194fbf6bdbe, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5853896915903203854, guid: 7d91f1597b5aec647ae6e194fbf6bdbe, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     - target: {fileID: 6471113251401408165, guid: 7d91f1597b5aec647ae6e194fbf6bdbe, type: 3}
       propertyPath: m_RootOrder
@@ -223,6 +251,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7172549366192724255, guid: 7d91f1597b5aec647ae6e194fbf6bdbe, type: 3}
+      propertyPath: m_TagString
+      value: Platform
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d91f1597b5aec647ae6e194fbf6bdbe, type: 3}
 --- !u!4 &6788657757528355389 stripped
@@ -244,6 +276,10 @@ PrefabInstance:
     - target: {fileID: 1818435218278758179, guid: 6ffa9dbc45dc18c498e2189cfa21e6b4, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818435218278758179, guid: 6ffa9dbc45dc18c498e2189cfa21e6b4, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     - target: {fileID: 3764837023278691160, guid: 6ffa9dbc45dc18c498e2189cfa21e6b4, type: 3}
       propertyPath: m_Layer
