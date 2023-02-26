@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6403884859400105742}
   - component: {fileID: 7357682616287409761}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: main_lev_build_113 (4)
   m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6403884859400105742
 Transform:
@@ -94,12 +94,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5103904246900440867}
   - component: {fileID: 8995867630702831273}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: main_lev_build_113 (2)
   m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5103904246900440867
 Transform:
@@ -177,7 +177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7792198534560653921}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LeftWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,12 +214,12 @@ GameObject:
   m_Component:
   - component: {fileID: 473056635740623851}
   - component: {fileID: 5060051405055180632}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: main_lev_build_113 (1)
   m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &473056635740623851
 Transform:
@@ -298,12 +298,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2689028993467907314}
   - component: {fileID: 1130429513196916988}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: main_lev_build_113 (3)
   m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2689028993467907314
 Transform:
@@ -382,12 +382,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2838326262442533269}
   - component: {fileID: 4183488071906341523}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: main_lev_build_113
   m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2838326262442533269
 Transform:

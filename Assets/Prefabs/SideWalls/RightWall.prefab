@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1256448051474341307}
   - component: {fileID: 8993318798170214262}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: main_lev_build_118 (4)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2243802644609759397}
   - component: {fileID: 7861730193768739645}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: main_lev_build_118 (1)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2817164103436540310}
   - component: {fileID: 240945013264485320}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: main_lev_build_118 (2)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8669445267625099851}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RightWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,7 +298,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8663052616994730786}
   - component: {fileID: 4492311575395188860}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: main_lev_build_118
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -382,7 +382,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6127506863733424165}
   - component: {fileID: 1894757161883484965}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: main_lev_build_118 (3)
   m_TagString: Platform
   m_Icon: {fileID: 0}
