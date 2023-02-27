@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace AGD
+{
 public class flyingEnemyDamage : MonoBehaviour
 {
     public PlayerHealth playerHealth;
@@ -30,4 +32,5 @@ public class flyingEnemyDamage : MonoBehaviour
         }
 
     }
+}
 }
