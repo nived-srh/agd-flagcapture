@@ -12,6 +12,8 @@ TagManager:
   - Clone
   - Projectile
   - Trap
+  - Enemy05
+  - Enemy02
   layers:
   - Default
   - TransparentFX
