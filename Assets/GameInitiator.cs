@@ -9,9 +9,8 @@ namespace AGD
     {
         private void OnCollisionEnter2D(Collision2D collision)
         {   
-            Debug.Log("Enter");
             if (collision.gameObject.tag == "Player")
-                SceneManager.LoadScene(1);
+                GameManager.instance.changeScene("PLAY");
         }
     }
 }

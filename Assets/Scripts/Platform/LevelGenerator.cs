@@ -78,12 +78,20 @@ namespace AGD
                 for (int col = 0; col < layoutArray[row].Length; col++)
                 {
                     bool hasPlatform = false;
-                    bool hasMob = true;
-                    bool hasObstacle = true;
+                    bool hasMob = ( col > 0 && col < 7 ? true : false);
+                    bool hasObstacle = Random.Range(0f, 1f) > 0.5;
+
                     Vector2 tempVector = (row == 0 ? prevGeneratedLayoutRow[col] : layoutArray[row - 1][col]);
-                    if (tempVector.y >= 0 && tempVector.y < 10)
+                    Vector2 platformRandOffset = new Vector2(0,0);
+
+                    if (tempVector.y > 7){
+                        float offsetY =  tempVector.y - 5;
+                        platformRandOffset = new Vector2(platformRandOffset.x, -10);
+                    }
+
+                    if (tempVector.y >= 0 )
                     {
-                        hasPlatform = Random.Range(0f, 1f) > (0.2 + itemsInRow / 10.0);
+                        hasPlatform = Random.Range(0f, 1f) > (0.3 + (itemsInRow / 10.0));
                         if (col > 0)
                         {
                             if (layoutArray[row][col - 1].x > 6)
@@ -102,6 +110,12 @@ namespace AGD
                             {
                                 hasPlatform = Random.Range(0f, 1f) > (0.5 - (platformLayoutColumns - itemsInRow) / 10.0);
                             }
+
+                            if(row > 0 ){
+                                if(layoutArray[row - 1][col-1].y > 7){
+                                    platformRandOffset = new Vector2( ( Random.Range(0f, 1f) > 0.5 ? -1 : 1) * Random.Range(4f, 8f) , platformRandOffset.y);
+                                }
+                            }
                         }
                     }
 
@@ -112,7 +126,7 @@ namespace AGD
 
                         GameObject platformObj = platformObjectPools[platformSelection].GetPooledObject();
                         layoutArray[row][col] = platformDimensions[platformSelection];
-                        platformObj.transform.position = new Vector3((xPositionOffset + (col * 10)) , transform.position.y + surfaceOfPlatform(platformDimensions[platformSelection]).y, platformObj.transform.position.z);
+                        platformObj.transform.position = new Vector3((xPositionOffset + (col * 10)) + platformRandOffset.x , transform.position.y + surfaceOfPlatform(platformDimensions[platformSelection]).y + platformRandOffset.y, platformObj.transform.position.z);
                         platformObj.SetActive(true);
 
                         if(hasObstacle){
