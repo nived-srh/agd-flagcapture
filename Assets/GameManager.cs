@@ -13,13 +13,14 @@ namespace AGD
         public enum GameMode { SOLO, VS, COOP }
         public GameMode mode;
 
-        public enum GameState { HOME, LOAD, PLAY, PAUSED, UNPAUSED, ENDING, ENDED }
+        public enum GameState { HOME, LOAD, PLAY, PAUSED, ENDED }
         public GameState state;
 
         public Dictionary<string, GameObject> playerMap;
         [SerializeField] private KeyCode pause;
 
         private Scene scene;
+        private int activePlayers;
 
         private void Awake()
         {
@@ -28,6 +29,7 @@ namespace AGD
                 instance = this;
                 mode = GameMode.VS;
                 state = GameState.HOME;
+                activePlayers = 1;
                 playerMap = new Dictionary<string, GameObject>();
                 DontDestroyOnLoad(this.gameObject);
             }
@@ -44,24 +46,59 @@ namespace AGD
 
             scene = SceneManager.GetActiveScene();
 
-            if (Input.GetKeyDown(pause))
+            if (scene.buildIndex == 1)
             {
-                state = GameState.PAUSED;
-                Debug.Log("PAUSED");
-            }
+                if (state == GameState.LOAD)
+                {
+                    initializePlayer("P1", true, true, new Vector2(-24, 1.5f));
+                    if (mode != GameMode.SOLO)
+                    {
+                        initializePlayer("P2", true, true, new Vector2(24, 1.5f));
+                        activePlayers = 2;
+                    }
+                    else
+                    {
+                        initializePlayer("P2", false, true, new Vector2(24, 1.5f));
+                    }
+                    state = GameState.PLAY;
+                }
 
-            if (state == GameState.LOAD && scene.buildIndex == 1)
-            {
-                initializePlayer("P1", true, true, new Vector2(-24, 1.5f));
-                if (mode != GameMode.SOLO)
+                if (Input.GetKeyDown(pause) && state == GameState.PLAY)
                 {
-                    initializePlayer("P2", true, true, new Vector2(24, 1.5f));
+                    state = GameState.PAUSED;
+                    Time.timeScale = 0;
+                    Debug.Log("PAUSED");
                 }
-                else
+                else if (Input.GetKeyDown(pause) && state == GameState.PAUSED)
                 {
-                    initializePlayer("P2", false, true, new Vector2(24, 1.5f));
+                    state = GameState.PLAY;
+                    Time.timeScale = 1;
+                    Debug.Log("PLAY");
                 }
-                state = GameState.PLAY;
+
+
+                if (state == GameState.PLAY)
+                {
+                    if (playerMap["P1"].activeSelf && playerMap["P1"].GetComponent<PlayerHealth>().enabled && playerMap["P1"].GetComponent<PlayerHealth>().currentHealth <= 0)
+                    {
+                        playerMap["P1"].SetActive(false);
+                        activePlayers -= 1;
+                    }
+
+                    if (playerMap["P2"].activeSelf && playerMap["P2"].GetComponent<PlayerHealth>().enabled && playerMap["P2"].GetComponent<PlayerHealth>().currentHealth <= 0)
+                    {
+                        playerMap["P2"].SetActive(false);
+                        activePlayers -= 1;
+                    }
+
+                    if (activePlayers == 0)
+                    {
+                        state = GameState.ENDED;
+                        Time.timeScale = 0;
+                        Debug.Log("ENDED");
+                    }
+
+                }
             }
         }
 

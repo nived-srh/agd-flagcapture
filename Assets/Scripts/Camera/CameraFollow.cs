@@ -6,8 +6,7 @@ namespace AGD
 {
     public class CameraFollow : MonoBehaviour
     {
-        public GameObject thePlayer;
-        public int minYForFollow;
+        private GameObject thePlayer;
         private Vector3 lastPlayerPosition;
         private float distanceToMove;
         // Start is called before the first frame update

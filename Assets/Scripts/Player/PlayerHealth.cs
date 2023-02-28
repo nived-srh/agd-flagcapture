@@ -15,9 +15,12 @@ namespace AGD
 
         public HealthBar healthBar;
 
+        void Awake(){
+            currentHealth = maxHealth;
+        }
+
         void Start()
         {
-            currentHealth = maxHealth;
             healthBar.SetMaxHealth(maxHealth);
         }
 
@@ -25,11 +28,6 @@ namespace AGD
         {
             currentHealth -= amount;
             healthBar.setHealth(currentHealth);
-            if (currentHealth <= 0)
-            {
-                //Kill Player
-                // Destroy(gameObject);
-            }
         }
     }
 }
