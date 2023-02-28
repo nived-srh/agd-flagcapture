@@ -43,11 +43,10 @@ GameObject:
   - component: {fileID: 8108642075265060156}
   - component: {fileID: 8108642075265060157}
   - component: {fileID: 8108642075265060146}
-  - component: {fileID: 8108642075265060147}
-  - component: {fileID: 8108642075265060144}
   - component: {fileID: 8108642075265060153}
   - component: {fileID: 8108642075265060158}
   - component: {fileID: -7890655427669864625}
+  - component: {fileID: 8825668688645786741}
   m_Layer: 0
   m_Name: enemy01
   m_TagString: Mob
@@ -172,40 +171,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8125, y: 1.4375}
   m_EdgeRadius: 0
---- !u!114 &8108642075265060147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8108642075265060145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e203f5c250121184db38bd7e97f05a3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  feetPosition: {fileID: 8108642076690222318}
-  middlePositionRight: {fileID: 8108642075106168706}
-  moveSpeed: 5
-  groundCheckDistance: 3
-  platformLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  scale: 1
---- !u!114 &8108642075265060144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8108642075265060145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcf47fb5d3b57314fb23cd623f1f958d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHealth: {fileID: 0}
-  damage: 2
 --- !u!95 &8108642075265060153
 Animator:
   serializedVersion: 5
@@ -339,6 +304,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8825668688645786741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8108642075265060145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e203f5c250121184db38bd7e97f05a3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  feetPosition: {fileID: 8108642076690222318}
+  middlePositionRight: {fileID: 8108642075106168706}
+  moveSpeed: 5
+  groundCheckDistance: 3
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  scale: 1
 --- !u!1 &8108642076690222319
 GameObject:
   m_ObjectHideFlags: 0

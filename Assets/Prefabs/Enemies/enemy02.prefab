@@ -43,10 +43,9 @@ GameObject:
   - component: {fileID: 2805907496160769378}
   - component: {fileID: 2805907496160769379}
   - component: {fileID: 2805907496160769436}
-  - component: {fileID: 2805907496160769437}
-  - component: {fileID: 2805907496160769438}
   - component: {fileID: 2805907496160769376}
   - component: {fileID: -8872360783841350726}
+  - component: {fileID: 1863293903793848942}
   m_Layer: 0
   m_Name: enemy02
   m_TagString: Mob
@@ -170,41 +169,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.375, y: 1.1875}
   m_EdgeRadius: 0
---- !u!114 &2805907496160769437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2805907496160769439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e5696e204e6414caca2ce75694c6e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isBlockedCheck: {fileID: 2805907495065030308}
-  feetPosition: {fileID: 2805907496674109682}
-  playerHit: 0
-  platformLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  scale: 1
-  moveSpeed: 7
---- !u!114 &2805907496160769438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2805907496160769439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ff3863895a58084bbfb9f1fbd22176c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSource: {fileID: -8872360783841350726}
-  audioClip: {fileID: 8300000, guid: 8b5355ffa70a72b489bfe92841a59e0d, type: 3}
-  damage: 5
 --- !u!95 &2805907496160769376
 Animator:
   serializedVersion: 5
@@ -321,6 +285,30 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1863293903793848942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2805907496160769439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892df3e83c40b4d4f932771971d9f588, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBlockedCheck: {fileID: 2805907495065030308}
+  feetPosition: {fileID: 2805907496674109682}
+  playerHit: 0
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  scale: 1
+  moveSpeed: 5
+  groundCheckDistance: 1
+  audioSource: {fileID: -8872360783841350726}
+  audioClip: {fileID: 8300000, guid: 8b5355ffa70a72b489bfe92841a59e0d, type: 3}
+  damage: 5
 --- !u!1 &2805907496674109683
 GameObject:
   m_ObjectHideFlags: 0

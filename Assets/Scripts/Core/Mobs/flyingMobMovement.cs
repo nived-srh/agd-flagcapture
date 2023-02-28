@@ -32,19 +32,6 @@ public class flyingMobMovement : MonoBehaviour
     void Update()
     {
 
-
-        // // Check if the enemy is moving to the right and flip enemy to the right
-        // if (rb.velocity.x > 0)
-        // {
-        //     transform.localScale = new Vector3(1, 1, 1);
-        // }
-
-        // // Check if the enemy is moving to the left and flip enemy to the left
-        // if (rb.velocity.x < 0)
-        // {
-        //     transform.localScale = new Vector3(-1, 1, 1);
-        // }
-
         rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
 
         //Check if above a platform

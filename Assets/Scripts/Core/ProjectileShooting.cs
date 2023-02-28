@@ -29,7 +29,6 @@ public class ProjectileShooting : MonoBehaviour
     {
 
         float distance = Mathf.Abs(transform.position.y - player.transform.position.y);
-        Debug.Log(distance);
 
         if (distance <= distanceCheck)
         {
