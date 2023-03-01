@@ -7,6 +7,7 @@ namespace AGD
     public class ItemDamage : MonoBehaviour
     {
         public int damage;
+        public float knockbackForce = 10f;
         // public int damage, enemykbForce;
         // public PlayerController playerController;
 
@@ -36,6 +37,13 @@ namespace AGD
                 //     playerController.knockFromRight = false;
                 // }
                 playerObjMap[collision.gameObject.GetInstanceID()].GetComponent<PlayerHealth>().TakeDamage(damage);
+
+                Rigidbody2D rb = collision.collider.GetComponent<Rigidbody2D>();
+                if( rb != null ){
+                    Vector2 velocity = rb.velocity;
+                    velocity.y = knockbackForce;
+                    rb.velocity = velocity;
+                }
             }
 
         }
