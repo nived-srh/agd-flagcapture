@@ -14,12 +14,29 @@ namespace AGD
         [SerializeField] private KeyCode right;
         [SerializeField] private KeyCode jump;
         
+        // dashing related
+        [SerializeField] private KeyCode dash;
+
+        private bool canDash;
+        private bool isDashing;
+        private float dashingPower = 24f;
+        private float dashingTime = 0.2f;
+        private float dashingCooldown = 1f;
+
+        [SerializeField] private TrailRenderer tr;
+        
         private Rigidbody2D rb;
         private SpriteRenderer sprite;
         private Animator anim;
 
         private enum MovementState { idle, running, jumping, falling }
         private MovementState state;
+
+        [SerializeField] private Transform groundCheckPoint;
+        [SerializeField] private float groundCheckRadius;
+        [SerializeField] private LayerMask whatIsGround;
+
+        [SerializeField] private bool isGrounded;
 
         // private float inputX;
         
@@ -34,6 +51,8 @@ namespace AGD
         // Update is called once per frame
         private void Update()
         {
+            if (isDashing) { return; }
+            isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, whatIsGround);
 
             MovementState state;
 
@@ -58,7 +77,7 @@ namespace AGD
                 // anim.SetBool("running", false);
             }
 
-            if (Input.GetKeyDown(jump))
+            if (Input.GetKeyDown(jump) && isGrounded)
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             }
@@ -72,7 +91,32 @@ namespace AGD
                 state = MovementState.falling;
             }
 
+            // dashing -- need to fix
+            if (Input.GetKeyDown(dash) && canDash)
+            {
+                StartCoroutine(Dash());
+            }
+
             anim.SetInteger("state", (int)state);
+        }
+
+        // dash routine -- need to identify why not working
+        private IEnumerator Dash()
+        {
+            canDash = false;
+            isDashing = true;
+            float OriginalGravity = rb.gravityScale;
+            rb.gravityScale = 0f;
+            // probably error in below line
+            rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * dashingPower, 0f);
+            tr.emitting = true;
+            yield return new WaitForSeconds(dashingTime);
+            tr.emitting = false;
+            rb.gravityScale = OriginalGravity;
+            isDashing = false;
+            yield return new WaitForSeconds(dashingCooldown);
+            canDash = true;
+
         }
 
         // public void Move(InputAction.CallbackContext context)
