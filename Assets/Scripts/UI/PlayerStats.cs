@@ -12,7 +12,7 @@ namespace AGD
         public Gradient gradient;
 
         void Start(){
-            score.text = "09";
+            setScore(0);
         }
 
         public void SetMaxHealth(int health){
