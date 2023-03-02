@@ -6,16 +6,25 @@ namespace AGD
 {
     public class ItemCollection : MonoBehaviour
     {
-        // Start is called before the first frame update
+        public int points;
+        private Dictionary<int, GameObject> playerObjMap;
         void Start()
         {
-        
+            playerObjMap = new Dictionary<int, GameObject>();
+            foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
+            {   
+                playerObjMap[go.GetInstanceID()] = go;
+            }
         }
 
-        // Update is called once per frame
-        void Update()
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-        
+            if (collision.gameObject.tag == "Player")
+            {
+                playerObjMap[collision.gameObject.GetInstanceID()].GetComponent<Player>().CollectPoints(points);
+                gameObject.SetActive(false);
+            }
+
         }
     }
 }

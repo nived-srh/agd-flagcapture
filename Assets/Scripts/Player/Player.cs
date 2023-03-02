@@ -103,7 +103,7 @@ namespace AGD
             currentScore += points;
             if (playerStats != null)
             {
-                playerStats.setScore(points);
+                playerStats.setScore(currentScore);
             }
         }
     }
