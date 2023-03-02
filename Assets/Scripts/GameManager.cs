@@ -27,7 +27,7 @@ namespace AGD
             if (instance == null)
             {
                 instance = this;
-                mode = GameMode.VS;
+                mode = GameMode.SOLO;
                 state = GameState.HOME;
                 activePlayers = 1;
                 playerMap = new Dictionary<string, GameObject>();
@@ -48,8 +48,9 @@ namespace AGD
 
             if (scene.buildIndex == 1)
             {
-                if (state == GameState.LOAD)
-                {
+                if (state == GameState.LOAD && scene.isLoaded)
+                {   
+                    activePlayers = 1;
                     initializePlayer("P1", true, new Vector2(-24, 1.5f));
                     if (mode != GameMode.SOLO)
                     {

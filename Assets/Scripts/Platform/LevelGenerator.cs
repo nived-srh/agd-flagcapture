@@ -16,6 +16,7 @@ namespace AGD
         public ObjectPooler[] platformObjectPools;
         public ObjectPooler[] mobObjectPools;
         public ObjectPooler[] obstacleObjectPools;
+        public ObjectPooler[] collectibleObjectPools;
         private int platformSelector;
         private Dictionary<string, int> objectPoolerTypeMap;
         private Dictionary<int, Vector2[]> layoutArray;
@@ -32,6 +33,7 @@ namespace AGD
             objectPoolerTypeMap["PLATFORM"] = platformObjectPools.Length;
             objectPoolerTypeMap["MOBS"] = mobObjectPools.Length;
             objectPoolerTypeMap["OBSTACLES"] = obstacleObjectPools.Length;
+            objectPoolerTypeMap["COLLECTIBLE"] = collectibleObjectPools.Length;
             platformDimensions = new Vector2[objectPoolerTypeMap["PLATFORM"]];
 
             for (int i = 0; i < platformObjectPools.Length; i++)
@@ -80,6 +82,7 @@ namespace AGD
                     bool hasPlatform = false;
                     bool hasMob = ( col > 0 && col < 7 ? true : false);
                     bool hasObstacle = Random.Range(0f, 1f) > 0.5;
+                    bool hasCollectible = Random.Range(0f, 1f) > 0.5;
 
                     Vector2 tempVector = (row == 0 ? prevGeneratedLayoutRow[col] : layoutArray[row - 1][col]);
                     Vector2 platformRandOffset = new Vector2(0,0);
@@ -124,21 +127,27 @@ namespace AGD
                         int platformSelection = filteredPlatformPool();
                         itemsInRow += 1;
 
-                        GameObject platformObj = platformObjectPools[platformSelection].GetPooledObject();
+                        GameObject renderObj = platformObjectPools[platformSelection].GetPooledObject();
                         layoutArray[row][col] = platformDimensions[platformSelection];
-                        platformObj.transform.position = new Vector3((xPositionOffset + (col * 10)) + platformRandOffset.x , transform.position.y + surfaceOfPlatform(platformDimensions[platformSelection]).y + platformRandOffset.y, platformObj.transform.position.z);
-                        platformObj.SetActive(true);
+                        renderObj.transform.position = new Vector3((xPositionOffset + (col * 10)) + platformRandOffset.x , transform.position.y + surfaceOfPlatform(platformDimensions[platformSelection]).y + platformRandOffset.y, renderObj.transform.position.z);
+                        renderObj.SetActive(true);
 
                         if(hasObstacle){
-                            platformObj = obstacleObjectPools[0].GetPooledObject();
-                            platformObj.transform.position = new Vector3((xPositionOffset + (col * 10)) , transform.position.y + 0.5f + 2 * surfaceOfPlatform(platformDimensions[platformSelection]).y, platformObj.transform.position.z);
-                            platformObj.SetActive(true);
+                            renderObj = obstacleObjectPools[0].GetPooledObject();
+                            renderObj.transform.position = new Vector3((xPositionOffset + (col * 10)) , transform.position.y + 0.5f + 2 * surfaceOfPlatform(platformDimensions[platformSelection]).y, renderObj.transform.position.z);
+                            renderObj.SetActive(true);
+                        }
+
+                        if(hasCollectible){
+                            renderObj = collectibleObjectPools[0].GetPooledObject();
+                            renderObj.transform.position = new Vector3((xPositionOffset + (col * 10)) , transform.position.y + 0.5f + 2 * surfaceOfPlatform(platformDimensions[platformSelection]).y, renderObj.transform.position.z);
+                            renderObj.SetActive(true);
                         }
 
                         if(hasMob){
-                            platformObj = mobObjectPools[0].GetPooledObject();
-                            platformObj.transform.position = new Vector3((xPositionOffset + (col * 10)) , transform.position.y + 0.5f + 2 * surfaceOfPlatform(platformDimensions[platformSelection]).y, platformObj.transform.position.z);
-                            platformObj.SetActive(true);
+                            renderObj = mobObjectPools[0].GetPooledObject();
+                            renderObj.transform.position = new Vector3((xPositionOffset + (col * 10)) , transform.position.y + 0.5f + 2 * surfaceOfPlatform(platformDimensions[platformSelection]).y, renderObj.transform.position.z);
+                            renderObj.SetActive(true);
                         }
 
                         if (row == platformLayoutRows - 1)
