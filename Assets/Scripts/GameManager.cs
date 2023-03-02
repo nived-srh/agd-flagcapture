@@ -37,8 +37,8 @@ namespace AGD
 
         void Start()
         {
-            initializePlayer("P1", true, false, new Vector2(-26, -3.4f));
-            initializePlayer("P2", true, false, new Vector2(26, -3.4f));
+            initializePlayer("P1", true, new Vector2(-26, -3.4f));
+            initializePlayer("P2", true, new Vector2(26, -3.4f));
         }
 
         void Update()
@@ -50,15 +50,15 @@ namespace AGD
             {
                 if (state == GameState.LOAD)
                 {
-                    initializePlayer("P1", true, true, new Vector2(-24, 1.5f));
+                    initializePlayer("P1", true, new Vector2(-24, 1.5f));
                     if (mode != GameMode.SOLO)
                     {
-                        initializePlayer("P2", true, true, new Vector2(24, 1.5f));
+                        initializePlayer("P2", true, new Vector2(24, 1.5f));
                         activePlayers = 2;
                     }
                     else
                     {
-                        initializePlayer("P2", false, true, new Vector2(24, 1.5f));
+                        initializePlayer("P2", false, new Vector2(24, 1.5f));
                     }
                     state = GameState.PLAY;
                 }
@@ -79,13 +79,13 @@ namespace AGD
 
                 if (state == GameState.PLAY)
                 {
-                    if (playerMap["P1"].activeSelf && playerMap["P1"].GetComponent<PlayerHealth>().enabled && playerMap["P1"].GetComponent<PlayerHealth>().currentHealth <= 0)
+                    if (playerMap["P1"].activeSelf && playerMap["P1"].GetComponent<Player>().currentHealth <= 0)
                     {
                         playerMap["P1"].SetActive(false);
                         activePlayers -= 1;
                     }
 
-                    if (playerMap["P2"].activeSelf && playerMap["P2"].GetComponent<PlayerHealth>().enabled && playerMap["P2"].GetComponent<PlayerHealth>().currentHealth <= 0)
+                    if (playerMap["P2"].activeSelf && playerMap["P2"].GetComponent<Player>().currentHealth <= 0)
                     {
                         playerMap["P2"].SetActive(false);
                         activePlayers -= 1;
@@ -96,6 +96,9 @@ namespace AGD
                         state = GameState.ENDED;
                         Time.timeScale = 0;
                         Debug.Log("ENDED");
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                        state = GameState.LOAD;
+                        Time.timeScale = 1;
                     }
 
                 }
@@ -139,7 +142,7 @@ namespace AGD
             }
         }
 
-        private void initializePlayer(string name, bool isActive, bool hasHealth, Vector2 spawnPosition)
+        private void initializePlayer(string name, bool isActive, Vector2 spawnPosition)
         {
 
             playerMap[name] = GameObject.Find(name);
@@ -147,12 +150,6 @@ namespace AGD
             if (isActive)
             {
                 playerMap[name].transform.position = spawnPosition;
-
-                if (hasHealth)
-                {
-                    playerMap[name].GetComponent<PlayerHealth>().enabled = true;
-                }
-
             }
             else
             {
