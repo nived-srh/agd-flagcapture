@@ -9,6 +9,7 @@ namespace AGD
         public Transform generationPoint;
         public float xPositionOffset;
         public float yPositionOffset;
+        
 
         public int platformLayoutColumns;
         public int platformLayoutRows;
@@ -20,15 +21,19 @@ namespace AGD
         private int platformSelector;
         private Dictionary<string, int> objectPoolerTypeMap;
         private Dictionary<int, Vector2[]> layoutArray;
+        private Dictionary<int, GameObject[]> layoutObjectArray;
         private Vector2[] prevGeneratedLayoutRow;
+        private GameObject[] prevGeneratedObjectRow;
         private Vector2[] platformDimensions;
 
         // Start is called before the first frame update
         void Start()
         {
             layoutArray = new Dictionary<int, Vector2[]>();
+            layoutObjectArray = new Dictionary<int, GameObject[]>();
             objectPoolerTypeMap = new Dictionary<string, int>();
             prevGeneratedLayoutRow = new Vector2[platformLayoutColumns];
+            prevGeneratedObjectRow = new GameObject[platformLayoutColumns];
 
             objectPoolerTypeMap["PLATFORM"] = platformObjectPools.Length;
             objectPoolerTypeMap["MOBS"] = mobObjectPools.Length;
@@ -44,13 +49,16 @@ namespace AGD
             for (int row = 0; row < platformLayoutRows; row++)
             {
                 layoutArray[row] = new Vector2[platformLayoutColumns];
+                layoutObjectArray[row] = new GameObject[platformLayoutColumns];
                 for (int col = 0; col < layoutArray[row].Length; col++)
                 {
                     layoutArray[row][col] = new Vector2(0, 0);
+                    layoutObjectArray[row][col] = null;
 
                     if (row == 0)
                     {
                         prevGeneratedLayoutRow[col] = new Vector2(0, 0);
+                        prevGeneratedObjectRow[col] = null;
                     }
                 }
             }
@@ -73,8 +81,9 @@ namespace AGD
             for (int row = 0; row < platformLayoutRows; row++)
             {
                 int itemsInRow = 0;
+                float maxHeightInRow = 0f;
                 layoutStr += " { ";
-                layoutArray[row] = new Vector2[platformLayoutColumns];
+                //layoutArray[row] = new Vector2[platformLayoutColumns];
 
                 transform.position = new Vector3(transform.position.x, transform.position.y + yPositionOffset, transform.position.z);
                 for (int col = 0; col < layoutArray[row].Length; col++)
@@ -89,7 +98,7 @@ namespace AGD
 
                     if (tempVector.y > 7){
                         float offsetY =  tempVector.y - 5;
-                        platformRandOffset = new Vector2(platformRandOffset.x, -10);
+                        //platformRandOffset = new Vector2(platformRandOffset.x, -10);
                     }
 
                     if (tempVector.y >= 0 )
@@ -116,7 +125,7 @@ namespace AGD
 
                             if(row > 0 ){
                                 if(layoutArray[row - 1][col-1].y > 7){
-                                    platformRandOffset = new Vector2( ( Random.Range(0f, 1f) > 0.5 ? -1 : 1) * Random.Range(4f, 8f) , platformRandOffset.y);
+                                    //platformRandOffset = new Vector2( ( Random.Range(0f, 1f) > 0.5 ? -1 : 1) * Random.Range(4f, 8f) , platformRandOffset.y);
                                 }
                             }
                         }
@@ -132,21 +141,26 @@ namespace AGD
                         renderObj.transform.position = new Vector3((xPositionOffset + (col * 10)) + platformRandOffset.x , transform.position.y + surfaceOfPlatform(platformDimensions[platformSelection]).y + platformRandOffset.y, renderObj.transform.position.z);
                         renderObj.SetActive(true);
 
+                        if( maxHeightInRow < layoutArray[row][col].y){
+                            maxHeightInRow = layoutArray[row][col].y;
+                            yPositionOffset = maxHeightInRow + 7;
+                        }
+
                         if(hasObstacle){
                             renderObj = obstacleObjectPools[0].GetPooledObject();
-                            renderObj.transform.position = new Vector3((xPositionOffset + (col * 10)) , transform.position.y + 0.5f + 2 * surfaceOfPlatform(platformDimensions[platformSelection]).y, renderObj.transform.position.z);
+                            renderObj.transform.position = new Vector3((xPositionOffset + (col * 10)) + platformRandOffset.x , transform.position.y + 0.5f + 2 * surfaceOfPlatform(platformDimensions[platformSelection]).y, renderObj.transform.position.z);
                             renderObj.SetActive(true);
                         }
 
                         if(hasCollectible){
                             renderObj = collectibleObjectPools[0].GetPooledObject();
-                            renderObj.transform.position = new Vector3((xPositionOffset + (col * 10)) , transform.position.y + 0.5f + 2 * surfaceOfPlatform(platformDimensions[platformSelection]).y, renderObj.transform.position.z);
+                            renderObj.transform.position = new Vector3((xPositionOffset + (col * 10)) + platformRandOffset.x , transform.position.y + 0.5f + 2 * surfaceOfPlatform(platformDimensions[platformSelection]).y, renderObj.transform.position.z);
                             renderObj.SetActive(true);
                         }
 
                         if(hasMob){
                             renderObj = mobObjectPools[0].GetPooledObject();
-                            renderObj.transform.position = new Vector3((xPositionOffset + (col * 10)) , transform.position.y + 0.5f + 2 * surfaceOfPlatform(platformDimensions[platformSelection]).y, renderObj.transform.position.z);
+                            renderObj.transform.position = new Vector3((xPositionOffset + (col * 10)) + platformRandOffset.x , transform.position.y + 0.5f + 2 * surfaceOfPlatform(platformDimensions[platformSelection]).y, renderObj.transform.position.z);
                             renderObj.SetActive(true);
                         }
 
