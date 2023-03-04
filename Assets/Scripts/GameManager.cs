@@ -21,10 +21,11 @@ namespace AGD
 
         private Scene scene;
         private int activePlayers;
-        public GameMenu gameMenu;
+        public GameObject gameMenu;
+        public GameObject gameUI;
         public GameObject settingsMenu;
 
-        public Component[] hingeJoints;
+        public GameObject[] players;
 
         private void Awake()
         {
@@ -36,14 +37,19 @@ namespace AGD
                 activePlayers = 1;
                 playerMap = new Dictionary<string, GameObject>();
                 DontDestroyOnLoad(this.gameObject);
+                DontDestroyOnLoad(GameObject.Find("OverlayCanvas"));
+                foreach (GameObject player in this.players)
+                {
+                    Debug.Log(player.name);
+                    playerMap[player.name] = player;
+                    DontDestroyOnLoad(player);
+                }
             }
         }
 
         void Start()
         {
             Debug.Log(scene.buildIndex);
-            // initializePlayer("P1", true, new Vector2(-26, -3.4f));
-            // initializePlayer("P2", true, new Vector2(26, -3.4f));
         }
 
         void Update()
@@ -55,7 +61,6 @@ namespace AGD
             {
                 if (state == GameState.EXIT && scene.isLoaded)
                 {
-                    playerMap = new Dictionary<string, GameObject>();
                     initializePlayer("P1", true, new Vector2(-26, -3.4f));
                     initializePlayer("P2", true, new Vector2(26, -3.4f));
                     Debug.Log("HOME");
@@ -70,21 +75,26 @@ namespace AGD
                 if (state == GameState.LOAD && scene.isLoaded)
                 {
                     Debug.Log("INITIATE PLAY");
-                    playerMap = new Dictionary<string, GameObject>();
                     activePlayers = 1;
                     initializePlayer("P1", true, new Vector2(-24, 1.5f));
                     if (mode != GameMode.SOLO)
                     {
                         initializePlayer("P2", true, new Vector2(24, 1.5f));
+                        playerMap["P2"].GetComponent<Player>().playerStats.SetActive(true);
                         activePlayers = 2;
                     }
                     else
                     {
                         initializePlayer("P2", false, new Vector2(24, 1.5f));
+                        playerMap["P2"].GetComponent<Player>().playerStats.SetActive(false);
                     }
                     state = GameState.PLAY;
-                    gameMenu =  (GameMenu)FindFirstObjectByType(typeof(GameMenu), FindObjectsInactive.Include);
+                    playerMap["P1"].GetComponent<Player>().ResetHealth(100, true);
+                    playerMap["P2"].GetComponent<Player>().ResetHealth(100, true);
+                    playerMap["P1"].GetComponent<Player>().ResetScore();
+                    playerMap["P2"].GetComponent<Player>().ResetScore();
                     gameMenu.gameObject.SetActive(false);
+                    gameUI.gameObject.SetActive(true);
 
                     Time.timeScale = 1;
                 }
@@ -132,9 +142,6 @@ namespace AGD
                         Debug.Log("ENDED");
                         gameMenu.gameObject.SetActive(true);
                         gameMenu.GetComponent<GameMenu>().setTitle("Game Over");
-                        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                        // state = GameState.LOAD;
-                        // Time.timeScale = 1;
                     }
 
                 }
@@ -147,6 +154,8 @@ namespace AGD
             {
                 case "HOME":
                     state = GameState.EXIT;
+                    gameMenu.gameObject.SetActive(false);
+                    gameUI.gameObject.SetActive(false);
                     SceneManager.LoadScene(0);
                     break;
                 case "PLAY":
@@ -159,7 +168,6 @@ namespace AGD
                     Debug.Log("EXIT");
                     Application.Quit();
                     break;
-
             }
         }
 
@@ -182,12 +190,11 @@ namespace AGD
         private void initializePlayer(string name, bool isActive, Vector2 spawnPosition)
         {
 
-            playerMap[name] = GameObject.Find(name);
-
             if (playerMap[name] != null)
             {
                 if (isActive)
                 {
+                    playerMap[name].SetActive(true);
                     playerMap[name].transform.position = spawnPosition;
                 }
                 else

@@ -13,7 +13,7 @@ namespace AGD
         public int currentHealth;
         public int currentScore;
         // Start is called before the first frame update
-        public PlayerStats playerStats;
+        public GameObject playerStats;
 
         [SerializeField] private float moveSpeed = 7f;
         [SerializeField] private float jumpForce = 14f;
@@ -43,7 +43,7 @@ namespace AGD
 
             if (playerStats != null)
             {
-                playerStats.SetMaxHealth(maxHealth);
+                playerStats.GetComponent<PlayerStats>().SetMaxHealth(maxHealth);
             }
         }
 
@@ -94,7 +94,7 @@ namespace AGD
             currentHealth -= amount;
             if (playerStats != null)
             {
-                playerStats.setHealth(currentHealth);
+                playerStats.GetComponent<PlayerStats>().setHealth(currentHealth);
             }
         }
 
@@ -103,9 +103,25 @@ namespace AGD
             currentScore += points;
             if (playerStats != null)
             {
-                playerStats.setScore(currentScore);
+                playerStats.GetComponent<PlayerStats>().setScore(currentScore);
             }
         }
+        
+        public void ResetHealth(int newHealth = 0, bool resetToMax = true)
+        {
+            if(resetToMax){
+                currentHealth = maxHealth;
+            }else{
+                currentHealth = newHealth;
+            }
+            playerStats.GetComponent<PlayerStats>().SetMaxHealth(currentHealth);
+        }
+
+        public void ResetScore()
+        {
+            currentScore = 0;
+        }
+
     }
 }
 
