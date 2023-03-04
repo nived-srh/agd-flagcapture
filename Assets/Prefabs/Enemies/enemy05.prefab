@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7682891382317580002}
   - component: {fileID: 7682891382317580001}
   - component: {fileID: 7682891382317580015}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: enemy05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff3863895a58084bbfb9f1fbd22176c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 0}
   damage: 20
 --- !u!95 &7682891382317580015
 Animator:
@@ -201,7 +200,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7682891382895889742}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: isblocked
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,7 +231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7682891383716885526}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: feetposition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
