@@ -21,9 +21,9 @@ namespace AGD
 
             if (mainCamera.transform.position.y - oldPosition.y > 17)
             {
-                if (mainCamera.transform.position.y - oldPosition.y > 25)
+                if (mainCamera.transform.position.y - oldPosition.y > 22)
                 {
-                    transform.position = Vector3.Lerp(transform.position, new Vector3(oldPosition.x, mainCamera.transform.position.y + 25, oldPosition.z), lerpSpeed);
+                    transform.position = Vector3.Lerp(transform.position, new Vector3(oldPosition.x, mainCamera.transform.position.y + 22, oldPosition.z), lerpSpeed);
                 }
                 else
                 {

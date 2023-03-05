@@ -11,7 +11,7 @@ public class IceArrows : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerHealth>().currentHealth -= damage;
+            other.gameObject.GetComponent<Player>().currentHealth -= damage;
             Destroy(gameObject);
         }
 

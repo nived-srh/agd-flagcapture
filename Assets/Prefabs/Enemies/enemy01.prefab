@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8108642075106168706}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: middlepositionright
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 8108642075265060158}
   - component: {fileID: -7890655427669864625}
   - component: {fileID: 8825668688645786741}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: enemy01
   m_TagString: Mob
   m_Icon: {fileID: 0}
@@ -333,7 +333,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8108642076690222318}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: feetposition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,7 +364,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8108642077208090748}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bulletposition
   m_TagString: Untagged
   m_Icon: {fileID: 0}

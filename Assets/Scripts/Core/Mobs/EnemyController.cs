@@ -102,7 +102,7 @@ public class EnemyController : MonoBehaviour
             if (attackTimer >= 1)
             {
                 audioSource.Play();
-                player.GetComponent<PlayerHealth>().TakeDamage(damage);
+                player.GetComponent<Player>().TakeDamage(damage);
                 attackTimer = 0;
             }
         }
@@ -126,7 +126,7 @@ public class EnemyController : MonoBehaviour
             // {
             //     playerController.knockFromRight = false;
             // }
-            player.GetComponent<PlayerHealth>().TakeDamage(damage);
+            player.GetComponent<Player>().TakeDamage(damage);
         }
     }
 

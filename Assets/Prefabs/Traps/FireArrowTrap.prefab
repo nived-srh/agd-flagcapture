@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3562656115764918794}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: shootingposition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 3562656117666402384}
   - component: {fileID: 3562656117666402385}
   - component: {fileID: 3562656117666402386}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FireArrowTrap
   m_TagString: Trap
   m_Icon: {fileID: 0}

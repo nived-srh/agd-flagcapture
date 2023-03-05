@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7682891382317580015}
   - component: {fileID: -7952396515467616311}
   - component: {fileID: 1029683649750652328}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: enemy05
   m_TagString: Mob
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7682891382895889742}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: isblocked
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,7 +318,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7682891383716885526}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: feetposition
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -8,7 +8,7 @@ public class Sandworm : MonoBehaviour
 {
 
     Animator animator;
-    private PlayerHealth playerHealth;
+    private Player playerHealth;
     public float damage;
     private float attackTimer;
     private bool attack = false;
@@ -18,7 +18,7 @@ public class Sandworm : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        playerHealth = player.GetComponent<PlayerHealth>();
+        playerHealth = player.GetComponent<Player>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

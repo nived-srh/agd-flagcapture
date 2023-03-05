@@ -5,14 +5,14 @@ using UnityEngine;
 public class Firetrap : MonoBehaviour
 {
     Animator animator;
-    private PlayerHealth playerHealth;
+    private Player playerHealth;
     public float damage;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        playerHealth = player.GetComponent<PlayerHealth>();
+        playerHealth = player.GetComponent<Player>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

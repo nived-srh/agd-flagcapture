@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7416304162344433206}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: shootingposition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 7416304163130236012}
   - component: {fileID: 7416304163130236013}
   - component: {fileID: 7416304163130236014}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: IceArrowTrap
   m_TagString: Trap
   m_Icon: {fileID: 0}
