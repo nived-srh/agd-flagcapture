@@ -12,6 +12,10 @@ TagManager:
   - Clone
   - flyingenemy_01_projectile
   - Collectible
+  - Projectile
+  - Trap
+  - Enemy05
+  - Enemy02
   layers:
   - Default
   - TransparentFX

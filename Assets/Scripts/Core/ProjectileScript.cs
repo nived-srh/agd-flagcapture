@@ -11,6 +11,7 @@ public class ProjectileScript : MonoBehaviour
     private Rigidbody2D rb;
     public float force;
     private float timer;
+    public float damage;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +38,7 @@ public class ProjectileScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerHealth>().currentHealth -= 5;
+            other.gameObject.GetComponent<PlayerHealth>().currentHealth -= damage;
             Destroy(gameObject);
         }
     }
