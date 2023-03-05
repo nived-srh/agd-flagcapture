@@ -10,7 +10,10 @@ TagManager:
   - Obstacle
   - Mob
   - Clone
-  - flyingenemy_01_projectile
+  - Projectile
+  - Trap
+  - Enemy05
+  - Enemy02
   layers:
   - Default
   - TransparentFX

@@ -5,6 +5,8 @@ using UnityEngine;
 public class ProjectileShooting : MonoBehaviour
 {
     public GameObject bullet;
+    public AudioSource audioSource;
+    public AudioClip audioClip;
     public Transform bulletPos;
     private float timer;
     private GameObject player;
@@ -19,6 +21,7 @@ public class ProjectileShooting : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         animator = GetComponent<Animator>();
+        audioSource.clip = audioClip;
     }
 
     // Update is called once per frame
@@ -34,6 +37,7 @@ public class ProjectileShooting : MonoBehaviour
             if (timer > 3)
             {
                 timer = 0;
+                audioSource.Play();
                 shoot();
             }
         }
@@ -49,7 +53,7 @@ public class ProjectileShooting : MonoBehaviour
 
     IEnumerator ResetAnimation()
     {
-        yield return new WaitForSeconds(0.33f);
+        yield return new WaitForSeconds(0.1f);
         animator.Play("fly");
     }
 }
