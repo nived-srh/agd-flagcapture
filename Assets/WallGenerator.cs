@@ -17,9 +17,9 @@ namespace AGD
         void Start()
         {
             GameObject sideWall = theObjectPool.GetPooledObject();
-            sideWall.transform.position = new Vector3(transform.position.x + 20, transform.position.y + 20, transform.position.z);
+            sideWall.transform.position = new Vector3(transform.position.x, transform.position.y + 20, -9);
             sideWall.SetActive(true);
-            transform.position = new Vector3(transform.position.x, transform.position.y + wallGap + 20, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y + wallGap + 20, -9);
         }
 
         // Update is called once per frame
@@ -28,9 +28,9 @@ namespace AGD
             if (transform.position.y < generationPoint.position.y)
             {
                 GameObject sideWall = theObjectPool.GetPooledObject();
-                sideWall.transform.position = new Vector3(transform.position.x, transform.position.y + wallGap, transform.position.z);
+                sideWall.transform.position = new Vector3(transform.position.x, transform.position.y + wallGap, -9);
                 sideWall.SetActive(true);
-                transform.position = new Vector3(transform.position.x, transform.position.y + wallGap, transform.position.z);
+                transform.position = new Vector3(transform.position.x, transform.position.y + wallGap, -9);
             }
 
         }
