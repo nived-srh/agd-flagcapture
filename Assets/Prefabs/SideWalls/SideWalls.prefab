@@ -41,7 +41,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6250860997784789374}
   - component: {fileID: 4753432656140146892}
-  - component: {fileID: 2102642817923060249}
   - component: {fileID: -377697637953461924}
   m_Layer: 3
   m_Name: SideWalls
@@ -80,22 +79,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ff250eadba36eb43b35a1e8f1c813d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2102642817923060249
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3636017184223257201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 183748dd497aa473a98ff0cd8cb67fc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  uniqueID: 934413988047794634
-  updateError: 1
-  checkTime: 0.2
 --- !u!61 &-377697637953461924
 BoxCollider2D:
   m_ObjectHideFlags: 0
