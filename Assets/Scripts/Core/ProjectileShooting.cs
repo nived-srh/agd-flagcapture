@@ -2,8 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileShooting : MonoBehaviour
+namespace AGD
 {
+
+    public class ProjectileShooting : MonoBehaviour
+    {
+
+
     public GameObject bullet;
     public AudioSource audioSource;
     public AudioClip audioClip;

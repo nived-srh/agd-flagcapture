@@ -17,9 +17,9 @@ namespace AGD
         void Start()
         {
             GameObject sideWall = theObjectPool.GetPooledObject();
-            sideWall.transform.position = new Vector3(transform.position.x, transform.position.y + 20, -9);
+            sideWall.transform.position = new Vector3(transform.position.x, transform.position.y, -9);
             sideWall.SetActive(true);
-            transform.position = new Vector3(transform.position.x, transform.position.y + wallGap + 20, -9);
+            transform.position = new Vector3(transform.position.x, transform.position.y, -9);
         }
 
         // Update is called once per frame

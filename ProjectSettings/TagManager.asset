@@ -10,6 +10,8 @@ TagManager:
   - Obstacle
   - Mob
   - Clone
+  - flyingenemy_01_projectile
+  - Collectible
   - Projectile
   - Trap
   - Enemy05
@@ -23,10 +25,10 @@ TagManager:
   - UI
   - Head
   - Player
-  - 
-  - 
-  - 
-  - 
+  - Mob
+  - Obstacle
+  - Collectible
+  - Decor
   - 
   - 
   - 

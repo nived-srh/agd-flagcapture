@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace AGD
+{
 public class ProjectileScript : MonoBehaviour
 {
 
@@ -40,4 +42,5 @@ public class ProjectileScript : MonoBehaviour
             Destroy(gameObject);
         }
     }
+}
 }
