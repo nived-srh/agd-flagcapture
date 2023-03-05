@@ -14,16 +14,25 @@ namespace AGD
         [SerializeField] private KeyCode right;
         [SerializeField] private KeyCode jump;
         
-        // dashing related
-        [SerializeField] private KeyCode dash;
+        // dashing with key
+        // [SerializeField] private KeyCode dash;
 
         private bool canDash;
         private bool isDashing;
-        private float dashingPower = 24f;
+        [SerializeField] private float dashingPower;
         private float dashingTime = 0.2f;
         private float dashingCooldown = 1f;
 
-        [SerializeField] private TrailRenderer tr;
+        private int leftTotal = 0;
+        private float leftTimeDelay = 0;
+        private int rightTotal = 0;
+        private float rightTimeDelay = 0;
+
+        // used for double jump
+        // private int jumpTotal = 0;
+        // private float jumpTimeDelay = 0;
+
+        [SerializeField] private TrailRenderer TrailRenderer;
         
         private Rigidbody2D rb;
         private SpriteRenderer sprite;
@@ -46,6 +55,7 @@ namespace AGD
             rb = GetComponent<Rigidbody2D>();
             sprite = GetComponent<SpriteRenderer>(); 
             anim = GetComponent<Animator>();
+            canDash = true;
         }
 
         // Update is called once per frame
@@ -62,14 +72,60 @@ namespace AGD
                 state = MovementState.running;
                 // anim.SetBool("running", true);
                 sprite.flipX = true;
+            
+
+                if (Input.GetKeyDown(left))
+                    leftTotal += 1;
+
+                if ((leftTotal == 1) && (leftTimeDelay < 0.5))
+                    leftTimeDelay += Time.deltaTime;
+
+                if ((leftTotal == 1) && (leftTimeDelay >= 0.5))
+                {
+                    leftTimeDelay = 0;
+                    leftTotal = 0;
+                }
+
+                if ((leftTotal == 2))
+                {
+                    leftTotal = 0;
+                     if((leftTimeDelay < 0.5) && canDash)
+                        StartCoroutine(Dash());
+
+                    leftTimeDelay = 0;
+                }
             }
-            else if(Input.GetKey(right))
+
+            else if (Input.GetKey(right))
             {
                 rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
                 state = MovementState.running;
                 // anim.SetBool("running", true);
                 sprite.flipX = false;
+            
+                if (Input.GetKeyDown(right))
+                    rightTotal += 1;
+
+                if ((rightTotal == 1) && (rightTimeDelay < 0.5))
+                    rightTimeDelay += Time.deltaTime;
+
+                if ((rightTotal == 1) && (rightTimeDelay >= 0.5))
+                {
+                    rightTimeDelay = 0;
+                    rightTotal = 0;
+                }
+
+                if ((rightTotal == 2))
+                {
+                    rightTotal = 0;
+                     if((rightTimeDelay < 0.5) && canDash)
+                        StartCoroutine(Dash());
+
+                    rightTimeDelay = 0;
+                }
             }
+            
+            // if (!Input.anyKeyDown)
             else
             {
                 rb.velocity = new Vector2(0, rb.velocity.y);
@@ -82,6 +138,34 @@ namespace AGD
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             }
 
+            // double jump logic
+            // if (Input.GetKeyDown(jump))
+            // {
+            //     if (isGrounded)
+            //     {
+            //         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            //         jumpTotal += 1;
+            //     }
+            //     if ((jumpTotal == 1) && (jumpTimeDelay < 0.5))
+            //         jumpTimeDelay += Time.deltaTime;
+
+            //     if ((jumpTotal == 1) && (jumpTimeDelay >= 0.5))
+            //     {
+            //         jumpTimeDelay = 0;
+            //         jumpTotal = 0;
+            //     }
+
+            //     if ((jumpTotal == 2))
+            //     {
+            //         jumpTotal = 0;
+            //          if((jumpTimeDelay < 0.5))
+            //             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+
+            //         jumpTimeDelay = 0;
+            //     }
+
+            // }
+
             if (rb.velocity.y > 0.1f)
             {
                 state = MovementState.jumping;
@@ -91,11 +175,11 @@ namespace AGD
                 state = MovementState.falling;
             }
 
-            // dashing -- need to fix
-            if (Input.GetKeyDown(dash) && canDash)
-            {
-                StartCoroutine(Dash());
-            }
+            // dashing with key
+            // if (Input.GetKeyDown(dash) && canDash)
+            // {
+            //     StartCoroutine(Dash());
+            // }
 
             anim.SetInteger("state", (int)state);
         }
@@ -109,9 +193,10 @@ namespace AGD
             rb.gravityScale = 0f;
             // probably error in below line
             rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * dashingPower, 0f);
-            tr.emitting = true;
+            
+            TrailRenderer.emitting = true;
             yield return new WaitForSeconds(dashingTime);
-            tr.emitting = false;
+            TrailRenderer.emitting = false;
             rb.gravityScale = OriginalGravity;
             isDashing = false;
             yield return new WaitForSeconds(dashingCooldown);
