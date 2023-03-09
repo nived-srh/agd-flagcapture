@@ -41,8 +41,8 @@ namespace AGD
         private int rightTotal = 0;
         private float rightTimeDelay = 0;
         // used for double jump
-        // private int jumpTotal = 0;
-        // private float jumpTimeDelay = 0;
+        private int jumpTotal = 0;
+        private float jumpTimeDelay = 0;
         [SerializeField] private TrailRenderer TrailRenderer;
 
         [SerializeField] private Transform groundCheckPoint;
@@ -76,77 +76,157 @@ namespace AGD
 
             MovementState state;
 
+            // if (Input.GetKey(left))
+            // {
+            //     rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
+            //     state = MovementState.running;
+            //     // anim.SetBool("running", true);
+            //     sprite.flipX = true;
+
+
+            //     if (Input.GetKeyDown(left))
+            //         leftTotal += 1;
+
+            //     if ((leftTotal == 1) && (leftTimeDelay < 0.5))
+            //         leftTimeDelay += Time.deltaTime;
+
+            //     if ((leftTotal == 1) && (leftTimeDelay >= 0.5))
+            //     {
+            //         leftTimeDelay = 0;
+            //         leftTotal = 0;
+            //     }
+
+            //     if ((leftTotal == 2))
+            //     {
+            //         leftTotal = 0;
+            //         if ((leftTimeDelay < 0.5) && canDash)
+            //         {
+            //             StartCoroutine(Dash(-1));
+            //             Debug.Log("DASHED");
+            //         }
+
+            //         leftTimeDelay = 0;
+            //     }
+            // }
             if (Input.GetKey(left))
             {
-                rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
                 state = MovementState.running;
-                // anim.SetBool("running", true);
                 sprite.flipX = true;
-            
-
-                if (Input.GetKeyDown(left))
+                if (leftTimeDelay > 0 && leftTotal == 1 && canDash && Input.GetKeyDown(left))
+                {
                     leftTotal += 1;
-
-                if ((leftTotal == 1) && (leftTimeDelay < 0.5))
-                    leftTimeDelay += Time.deltaTime;
-
-                if ((leftTotal == 1) && (leftTimeDelay >= 0.5))
+                    StartCoroutine(Dash(-1));
+                }
+                else
                 {
-                    leftTimeDelay = 0;
-                    leftTotal = 0;
+                    leftTotal = 1;
+                    leftTimeDelay = 0.5f;
+                    rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
                 }
 
-                if ((leftTotal == 2))
-                {
-                    leftTotal = 0;
-                     if((leftTimeDelay < 0.5) && canDash)
-                        StartCoroutine(Dash());
-
-                    leftTimeDelay = 0;
-                }
             }
 
             else if (Input.GetKey(right))
             {
-                rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
                 state = MovementState.running;
-                // anim.SetBool("running", true);
                 sprite.flipX = false;
-            
-                if (Input.GetKeyDown(right))
+                if (rightTimeDelay > 0 && rightTotal == 1 && canDash && Input.GetKeyDown(right))
+                {
                     rightTotal += 1;
-
-                if ((rightTotal == 1) && (rightTimeDelay < 0.5))
-                    rightTimeDelay += Time.deltaTime;
-
-                if ((rightTotal == 1) && (rightTimeDelay >= 0.5))
+                    StartCoroutine(Dash(1));
+                }
+                else
                 {
-                    rightTimeDelay = 0;
-                    rightTotal = 0;
+                    rightTotal = 1;
+                    rightTimeDelay = 0.5f;
+                    rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
                 }
 
-                if ((rightTotal == 2))
-                {
-                    rightTotal = 0;
-                     if((rightTimeDelay < 0.5) && canDash)
-                        StartCoroutine(Dash());
-
-                    rightTimeDelay = 0;
-                }
             }
-            
-            // if (!Input.anyKeyDown)
+
+            // else if (Input.GetKey(right))
+            // {
+            //     rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+            //     state = MovementState.running;
+            //     // anim.SetBool("running", true);
+            //     sprite.flipX = false;
+
+            //     if (Input.GetKeyDown(right))
+            //         rightTotal += 1;
+
+            //     if ((rightTotal == 1) && (rightTimeDelay < 0.5))
+            //         rightTimeDelay += Time.deltaTime;
+
+            //     if ((rightTotal == 1) && (rightTimeDelay >= 0.5))
+            //     {
+            //         rightTimeDelay = 0;
+            //         rightTotal = 0;
+            //     }
+
+            //     if ((rightTotal == 2))
+            //     {
+            //         rightTotal = 0;
+            //          if((rightTimeDelay < 0.5) && canDash)
+            //             {   
+            //                 StartCoroutine(Dash(1));
+            //                 Debug.Log("DASHED");
+            //             }
+
+            //         rightTimeDelay = 0;
+            //     }
+            // }
+
             else
             {
                 rb.velocity = new Vector2(0, rb.velocity.y);
                 state = MovementState.idle;
-                // anim.SetBool("running", false);
             }
 
-            if (Input.GetKeyDown(jump) && isGrounded)
+            if (Input.GetKeyDown(jump))
             {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                if (jumpTimeDelay > 0 && jumpTotal == 1)
+                {
+                    jumpTotal += 1;
+                    rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                }
+                else if (isGrounded)
+                {
+                    jumpTotal = 1;
+                    jumpTimeDelay = 0.5f;
+                    rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                }
+
+                if (jumpTimeDelay > 0)
+                {
+                    jumpTimeDelay -= 1 * Time.deltaTime;
+                }
+                else
+                {
+                    jumpTotal = 0;
+                }
             }
+
+            if (rightTimeDelay > 0)
+            {
+                rightTimeDelay -= 0.5f * Time.deltaTime;
+            }
+            else
+            {
+                rightTotal = 0;
+            }
+
+            if (leftTimeDelay > 0)
+            {
+                leftTimeDelay -= 0.5f * Time.deltaTime;
+            }
+            else
+            {
+                leftTotal = 0;
+            }
+            // if (Input.GetKeyDown(jump) && isGrounded)
+            // {
+            //     rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            // }
 
             // double jump logic
             // if (Input.GetKeyDown(jump))
@@ -185,25 +265,19 @@ namespace AGD
                 state = MovementState.falling;
             }
 
-            // dashing with key
-            // if (Input.GetKeyDown(dash) && canDash)
-            // {
-            //     StartCoroutine(Dash());
-            // }
-
             anim.SetInteger("state", (int)state);
         }
 
         // dash routine -- need to identify why not working
-        private IEnumerator Dash()
+        private IEnumerator Dash(int direction = 0)
         {
             canDash = false;
             isDashing = true;
             float OriginalGravity = rb.gravityScale;
             rb.gravityScale = 0f;
             // probably error in below line
-            rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * dashingPower, 0f);
-            
+            rb.velocity = new Vector2(direction * dashingPower, 0f);
+
             TrailRenderer.emitting = true;
             yield return new WaitForSeconds(dashingTime);
             TrailRenderer.emitting = false;
@@ -231,12 +305,15 @@ namespace AGD
                 playerStats.GetComponent<PlayerStats>().setScore(currentScore);
             }
         }
-        
+
         public void ResetHealth(int newHealth = 0, bool resetToMax = true)
         {
-            if(resetToMax){
+            if (resetToMax)
+            {
                 currentHealth = maxHealth;
-            }else{
+            }
+            else
+            {
                 currentHealth = newHealth;
             }
             playerStats.GetComponent<PlayerStats>().SetMaxHealth(currentHealth);

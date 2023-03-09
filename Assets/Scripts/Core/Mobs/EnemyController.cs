@@ -114,6 +114,7 @@ public class EnemyController : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             player = collision.gameObject;
+            player.GetComponent<Player>().TakeDamage(damage);
             audioSource.Play();
 
             // playerController.kbForce = enemykbForce;
@@ -126,7 +127,6 @@ public class EnemyController : MonoBehaviour
             // {
             //     playerController.knockFromRight = false;
             // }
-            player.GetComponent<Player>().TakeDamage(damage);
         }
     }
 

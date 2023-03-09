@@ -3169,7 +3169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdf4c02a9fcc15c45b099c6141ab58ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
+  damage: 20
   knockbackForce: 30
 --- !u!4 &1548664486
 Transform:

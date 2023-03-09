@@ -91,7 +91,7 @@ namespace AGD
                     bool hasPlatform = platformMap[row][col];
                     bool hasMob = (col > 0 && col < 7 ? true : false);
                     bool hasObstacle = Random.Range(0f, 1f) > 0.5;
-                    bool hasCollectible = Random.Range(0f, 1f) > 0.5;
+                    bool hasCollectible = Random.Range(0f, 1f) > 0.7;
 
                     Vector2 tempVector = (row == 0 ? prevGeneratedLayoutRow[col] : layoutArray[row - 1][col]);
                     Vector2 platformRandOffset = new Vector2(0, 0);
@@ -130,12 +130,10 @@ namespace AGD
                     //         }
                     //     }
                     // }
+                    GameObject platformObj = floorPlatformObjectPools[0].GetPooledObject();
 
                     if (hasPlatform)
                     {
-
-                        GameObject platformObj = floorPlatformObjectPools[0].GetPooledObject();
-
                         int platformSelection = (Random.Range(0f, 1f) > 0.7 ? filteredPlatformPool("FLOORPLATFORM") : 0);
 
                         platformObj = floorPlatformObjectPools[platformSelection].GetPooledObject();
@@ -147,7 +145,7 @@ namespace AGD
                         {
                             platformSelection = filteredPlatformPool("PLATFORM");
                             platformObj = platformObjectPools[platformSelection].GetPooledObject();
-                            layoutArray[row][col] = platformObj.GetComponent<BoxCollider2D>().size;
+                            layoutArray[row][col] = new Vector2( platformObj.GetComponent<BoxCollider2D>().size.x, ( layoutArray[row][col].y < platformObj.GetComponent<BoxCollider2D>().size.y ? platformObj.GetComponent<BoxCollider2D>().size.y : layoutArray[row][col].y ));
                             platformObj.transform.position = new Vector3((xPositionOffset + (col * 10)) + platformRandOffset.x, transform.position.y + surfaceOfPlatform(platformObj.GetComponent<BoxCollider2D>().size).y + platformRandOffset.y, platformObj.transform.position.z);
                             platformObj.SetActive(true);
 
@@ -188,6 +186,13 @@ namespace AGD
                             prevGeneratedLayoutRow[col] = layoutArray[row][col];
                         }
 
+                    }else{
+                        tempVector = (row == 0 ? prevGeneratedLayoutRow[col] : layoutArray[row - 1][col]);
+                        if(tempVector.y < 8){
+                            platformObj = floorPlatformObjectPools[3].GetPooledObject();
+                            platformObj.transform.position = new Vector3((xPositionOffset + (col * 10)) + platformRandOffset.x, transform.position.y + surfaceOfPlatform(platformObj.GetComponent<BoxCollider2D>().size).y - 6f, platformObj.transform.position.z);
+                            platformObj.SetActive(true);
+                        }
                     }
 
                     layoutStr = layoutStr + platformMap[row][col] + " ";
