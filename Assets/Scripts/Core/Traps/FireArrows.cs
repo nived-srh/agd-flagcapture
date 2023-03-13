@@ -16,10 +16,7 @@ namespace AGD
                 Destroy(gameObject);
             }
 
-            if (other.gameObject.CompareTag("Platform"))
-            {
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
 
     }

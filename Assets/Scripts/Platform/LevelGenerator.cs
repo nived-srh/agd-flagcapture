@@ -91,45 +91,11 @@ namespace AGD
                     bool hasPlatform = platformMap[row][col];
                     bool hasMob = (col > 0 && col < 7 ? true : false);
                     bool hasObstacle = Random.Range(0f, 1f) > 0.5;
-                    bool hasCollectible = Random.Range(0f, 1f) > 0.7;
+                    bool hasCollectible = Random.Range(0f, 1f) > 0.6;
 
                     Vector2 tempVector = (row == 0 ? prevGeneratedLayoutRow[col] : layoutArray[row - 1][col]);
                     Vector2 platformRandOffset = new Vector2(0, 0);
 
-                    // if (tempVector.y > 7){
-                    //     float offsetY =  tempVector.y - 5;
-                    //     //platformRandOffset = new Vector2(platformRandOffset.x, -10);
-                    // }
-
-                    // if (tempVector.y >= 0 )
-                    // {
-                    //     hasPlatform = Random.Range(0f, 1f) > (0.3 + (itemsInRow / 10.0));
-                    //     if (col > 0)
-                    //     {
-                    //         if (layoutArray[row][col - 1].x > 6)
-                    //         {
-                    //             hasPlatform = false;
-                    //             if (layoutArray[row][col - 1].x > 10)
-                    //             {
-                    //                 col = col - 1 + (int) Mathf.Ceil(layoutArray[row][col - 1].x) / 10;
-                    //                 if ( col > layoutArray[row].Length){
-                    //                     col = layoutArray[row].Length;
-                    //                     break;
-                    //                 }
-                    //             }
-                    //         }
-                    //         else
-                    //         {
-                    //             hasPlatform = Random.Range(0f, 1f) > (0.5 - (platformLayoutColumns - itemsInRow) / 10.0);
-                    //         }
-
-                    //         if(row > 0 ){
-                    //             if(layoutArray[row - 1][col-1].y > 7){
-                    //                 //platformRandOffset = new Vector2( ( Random.Range(0f, 1f) > 0.5 ? -1 : 1) * Random.Range(4f, 8f) , platformRandOffset.y);
-                    //             }
-                    //         }
-                    //     }
-                    // }
                     GameObject platformObj = floorPlatformObjectPools[0].GetPooledObject();
 
                     if (hasPlatform)
@@ -160,17 +126,37 @@ namespace AGD
                         }
 
                         GameObject renderObj;
+                        int itemSelection; 
+
                         if (hasObstacle)
                         {
-                            renderObj = obstacleObjectPools[(int)Random.Range(0, objectPoolerTypeMap["OBSTACLE"] - 0.0000001f)].GetPooledObject();
-                            renderObj.transform.position = new Vector3((xPositionOffset + (col * 10)) + platformRandOffset.x, transform.position.y + 2 * surfaceOfPlatform(platformObj.GetComponent<BoxCollider2D>().size).y, renderObj.transform.position.z);
+                            itemSelection = (int)Random.Range(0, objectPoolerTypeMap["OBSTACLE"] - 0.0000001f);
+
+                            if( layoutArray[row][col].x < 5){
+                                platformRandOffset = new Vector2( ( Random.Range(0f, 1f) > 0.5 ? 0.5f : -0.5f), platformRandOffset.y);
+                            }
+
+                            renderObj = obstacleObjectPools[itemSelection].GetPooledObject();
+                            renderObj.transform.position = new Vector3((xPositionOffset + (col * 10)) + platformRandOffset.x + obstacleObjectPools[itemSelection].xPositionOffset, transform.position.y + obstacleObjectPools[itemSelection].yPositionOffset + 2 * surfaceOfPlatform(platformObj.GetComponent<BoxCollider2D>().size).y, renderObj.transform.position.z);
                             renderObj.SetActive(true);
+                            platformRandOffset = new Vector2(0, 0);
                         }
 
                         if (hasCollectible)
                         {
-                            renderObj = collectibleObjectPools[(int)Random.Range(0, objectPoolerTypeMap["COLLECTIBLE"] - 0.0000001f)].GetPooledObject();
-                            renderObj.transform.position = new Vector3((xPositionOffset + (col * 10)) + platformRandOffset.x, transform.position.y + 0.5f + 2 * surfaceOfPlatform(platformObj.GetComponent<BoxCollider2D>().size).y + 4f, renderObj.transform.position.z);
+                            itemSelection = 0 ;
+                            renderObj = collectibleObjectPools[itemSelection].GetPooledObject();
+                            renderObj.transform.position = new Vector3((xPositionOffset + (col * 10)) + platformRandOffset.x + collectibleObjectPools[itemSelection].xPositionOffset, transform.position.y + collectibleObjectPools[itemSelection].yPositionOffset + 2 * surfaceOfPlatform(platformObj.GetComponent<BoxCollider2D>().size).y + 4f, renderObj.transform.position.z);
+                            renderObj.SetActive(true);
+                        }else if(Random.Range(0f, 1f) > 0.6) {
+                            itemSelection = 1 ;
+                            renderObj = collectibleObjectPools[itemSelection].GetPooledObject();
+                            renderObj.transform.position = new Vector3((xPositionOffset + (col * 10)) + platformRandOffset.x + collectibleObjectPools[itemSelection].xPositionOffset, transform.position.y + collectibleObjectPools[itemSelection].yPositionOffset + 2 * surfaceOfPlatform(platformObj.GetComponent<BoxCollider2D>().size).y + 4f, renderObj.transform.position.z);
+                            renderObj.SetActive(true);
+                        }else if (Random.Range(0f, 1f) > 0.8){
+                            itemSelection = (int)Random.Range(2, objectPoolerTypeMap["COLLECTIBLE"] - 0.0000001f);
+                            renderObj = collectibleObjectPools[itemSelection].GetPooledObject();
+                            renderObj.transform.position = new Vector3((xPositionOffset + (col * 10)) + platformRandOffset.x + collectibleObjectPools[itemSelection].xPositionOffset, transform.position.y + collectibleObjectPools[itemSelection].yPositionOffset + 2 * surfaceOfPlatform(platformObj.GetComponent<BoxCollider2D>().size).y + 4f, renderObj.transform.position.z);
                             renderObj.SetActive(true);
                         }
 

@@ -9,12 +9,12 @@ namespace AGD
         Animator animator;
         private Player playerHealth;
         public int damage;
-
+        private GameObject player;
         void Start()
         {
             animator = GetComponent<Animator>();
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            playerHealth = player.GetComponent<Player>();
+            // GameObject player = GameObject.FindGameObjectWithTag("Player");
+            // playerHealth = player.GetComponent<Player>();
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -39,7 +39,8 @@ namespace AGD
         {
             if (other.gameObject.tag == "Player")
             {
-                playerHealth.TakeDamage(damage);
+                player = other.gameObject;
+                player.GetComponent<Player>().TakeDamage(damage);
             }
         }
     }

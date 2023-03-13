@@ -18,7 +18,7 @@ namespace AGD
                 player.GetComponent<Player>().TakeDamage(damage);
 
                 Rigidbody2D rb = collision.collider.GetComponent<Rigidbody2D>();
-                if (rb != null)
+                if (rb != null && knockbackForce > 0)
                 {
                     Vector2 velocity = rb.velocity;
                     velocity.y = knockbackForce;

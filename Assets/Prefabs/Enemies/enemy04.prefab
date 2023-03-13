@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 8062254374188041616}
   - component: {fileID: 2617793900073492976}
   - component: {fileID: 371603389982265476}
+  - component: {fileID: 1188606765351907280}
   m_Layer: 8
   m_Name: enemy04
   m_TagString: Mob
@@ -340,3 +341,15 @@ MonoBehaviour:
   audioSource: {fileID: 2617793900073492976}
   audioClip: {fileID: 8300000, guid: 7af9ee2986b060f4c905f1fa1926df56, type: 3}
   damage: 10
+--- !u!114 &1188606765351907280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8062254374188041625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff250eadba36eb43b35a1e8f1c813d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
