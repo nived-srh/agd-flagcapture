@@ -27,6 +27,9 @@ namespace AGD
 
         public GameObject[] players;
 
+        private float startTime;
+        private float currentTime;
+
         private void Awake()
         {
             if (instance == null)
@@ -61,8 +64,8 @@ namespace AGD
             {
                 if (state == GameState.EXIT && scene.isLoaded)
                 {
-                    initializePlayer("P1", true, new Vector2(-26, -3.4f));
-                    initializePlayer("P2", true, new Vector2(26, -3.4f));
+                    //initializePlayer("P1", true, new Vector2(-26, -3.4f));
+                    //initializePlayer("P2", true, new Vector2(26, -3.4f));
                     Debug.Log("HOME");
                     state = GameState.HOME;
 
@@ -93,10 +96,16 @@ namespace AGD
                     playerMap["P2"].GetComponent<Player>().ResetHealth(100, true);
                     playerMap["P1"].GetComponent<Player>().ResetScore();
                     playerMap["P2"].GetComponent<Player>().ResetScore();
+                    
+                    gameMenu.GetComponent<GameMenu>().toggleGameOverMenu();
+                    gameMenu.GetComponent<GameMenu>().togglePauseMenu();
                     gameMenu.gameObject.SetActive(false);
                     gameUI.gameObject.SetActive(true);
+                    gameUI.GetComponent<GameMenu>().setMode(mode.ToString());
 
                     Time.timeScale = 1;
+                    startTime = Time.time;
+                    gameUI.GetComponent<GameMenu>().setTime((Mathf.Round((Time.time - startTime) * 100.0f) / 100.0f));
                 }
 
                 if (Input.GetKeyDown(pause) && state == GameState.PLAY)
@@ -104,6 +113,7 @@ namespace AGD
                     state = GameState.PAUSED;
                     gameMenu.gameObject.SetActive(true);
                     gameMenu.GetComponent<GameMenu>().setTitle("Game Paused");
+                    gameMenu.GetComponent<GameMenu>().togglePauseMenu();
                     Time.timeScale = 0;
                     Debug.Log("PAUSED");
                 }
@@ -112,6 +122,7 @@ namespace AGD
                     state = GameState.PLAY;
                     Time.timeScale = 1;
                     Debug.Log("PLAY");
+                    gameMenu.GetComponent<GameMenu>().togglePauseMenu();
                     gameMenu.gameObject.SetActive(false);
                 }
 
@@ -135,6 +146,7 @@ namespace AGD
                             activePlayers -= 1;
                         }
                     }
+
                     if (activePlayers == 0)
                     {
                         state = GameState.ENDED;
@@ -142,7 +154,21 @@ namespace AGD
                         Debug.Log("ENDED");
                         gameMenu.gameObject.SetActive(true);
                         gameMenu.GetComponent<GameMenu>().setTitle("Game Over");
+                        gameMenu.GetComponent<GameMenu>().setTime(currentTime);
+                        gameMenu.GetComponent<GameMenu>().toggleGameOverMenu();
                     }
+                    else if (activePlayers == 1 && mode == GameMode.COOP)
+                    {
+                        state = GameState.ENDED;
+                        Time.timeScale = 0;
+                        Debug.Log("ENDED");
+                        gameMenu.gameObject.SetActive(true);
+                        gameMenu.GetComponent<GameMenu>().setTitle("Game Over");
+                        gameMenu.GetComponent<GameMenu>().setTime(currentTime);
+                    }
+
+                    currentTime = (Mathf.Round((Time.time - startTime) * 100.0f) / 100.0f);
+                    gameUI.GetComponent<GameMenu>().setTime(currentTime);
 
                 }
             }
@@ -156,6 +182,8 @@ namespace AGD
                     state = GameState.EXIT;
                     gameMenu.gameObject.SetActive(false);
                     gameUI.gameObject.SetActive(false);
+                    playerMap["P1"].SetActive(false);
+                    playerMap["P2"].SetActive(false);
                     SceneManager.LoadScene(0);
                     break;
                 case "PLAY":
@@ -170,6 +198,13 @@ namespace AGD
                     break;
             }
         }
+
+        // void LateUpdate() {
+        //     if (scene.buildIndex == 1)
+        //     {
+        //         gameUI.GetComponent<GameMenu>().setTime((Mathf.Round((Time.time - startTime) * 100.0f) / 100.0f));
+        //     }
+        // }
 
         public void changeGameMode(string newMode)
         {

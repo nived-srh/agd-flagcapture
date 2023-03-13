@@ -9,19 +9,6 @@ namespace AGD
         public int damage;
         public float knockbackForce = 20f;
         private GameObject player;
-        // public int damage, enemykbForce;
-        // public PlayerController playerController;
-
-        private Dictionary<int, GameObject> playerObjMap;
-        void Start()
-        {
-            playerObjMap = new Dictionary<int, GameObject>();
-            foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
-            {
-                playerObjMap[go.GetInstanceID()] = go;
-            }
-        }
-
 
         private void OnCollisionEnter2D(Collision2D collision)
         {

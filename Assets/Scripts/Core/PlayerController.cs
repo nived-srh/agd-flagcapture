@@ -14,8 +14,6 @@ public class PlayerController : MonoBehaviour
     public float kbForce, kbCounter, kbTotalTime;
     public bool knockFromRight;
 
-
-    
     void Update()
     {
         input = Input.GetAxisRaw("Horizontal");

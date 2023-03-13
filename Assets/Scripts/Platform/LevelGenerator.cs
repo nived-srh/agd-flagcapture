@@ -40,7 +40,7 @@ namespace AGD
             objectPoolerTypeMap["PLATFORM"] = platformObjectPools.Length;
             objectPoolerTypeMap["FLOORPLATFORM"] = floorPlatformObjectPools.Length;
             objectPoolerTypeMap["MOBS"] = mobObjectPools.Length;
-            objectPoolerTypeMap["OBSTACLES"] = obstacleObjectPools.Length;
+            objectPoolerTypeMap["OBSTACLE"] = obstacleObjectPools.Length;
             objectPoolerTypeMap["COLLECTIBLE"] = collectibleObjectPools.Length;
 
             for (int row = 0; row < platformLayoutRows; row++)
@@ -156,20 +156,20 @@ namespace AGD
                         if (maxHeightInRow < layoutArray[row][col].y)
                         {
                             maxHeightInRow = layoutArray[row][col].y;
-                            yPositionOffset = maxHeightInRow + 7;
+                            yPositionOffset = maxHeightInRow + 8;
                         }
 
                         GameObject renderObj;
                         if (hasObstacle)
                         {
-                            renderObj = obstacleObjectPools[0].GetPooledObject();
-                            renderObj.transform.position = new Vector3((xPositionOffset + (col * 10)) + platformRandOffset.x, transform.position.y + 0.5f + 2 * surfaceOfPlatform(platformObj.GetComponent<BoxCollider2D>().size).y, renderObj.transform.position.z);
+                            renderObj = obstacleObjectPools[(int)Random.Range(0, objectPoolerTypeMap["OBSTACLE"] - 0.0000001f)].GetPooledObject();
+                            renderObj.transform.position = new Vector3((xPositionOffset + (col * 10)) + platformRandOffset.x, transform.position.y + 2 * surfaceOfPlatform(platformObj.GetComponent<BoxCollider2D>().size).y, renderObj.transform.position.z);
                             renderObj.SetActive(true);
                         }
 
                         if (hasCollectible)
                         {
-                            renderObj = collectibleObjectPools[0].GetPooledObject();
+                            renderObj = collectibleObjectPools[(int)Random.Range(0, objectPoolerTypeMap["COLLECTIBLE"] - 0.0000001f)].GetPooledObject();
                             renderObj.transform.position = new Vector3((xPositionOffset + (col * 10)) + platformRandOffset.x, transform.position.y + 0.5f + 2 * surfaceOfPlatform(platformObj.GetComponent<BoxCollider2D>().size).y + 4f, renderObj.transform.position.z);
                             renderObj.SetActive(true);
                         }

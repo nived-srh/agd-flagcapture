@@ -2,24 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class FireArrows : MonoBehaviour
+namespace AGD
 {
-
-    public float damage;
-    void OnCollisionEnter2D(Collision2D other)
+    public class FireArrows : MonoBehaviour
     {
-        if (other.gameObject.CompareTag("Player"))
+
+        public int damage;
+        void OnCollisionEnter2D(Collision2D other)
         {
-            other.gameObject.GetComponent<Player>().currentHealth -= damage;
-            Destroy(gameObject);
+            if (other.gameObject.CompareTag("Player"))
+            {
+                other.gameObject.GetComponent<Player>().currentHealth -= damage;
+                Destroy(gameObject);
+            }
+
+            if (other.gameObject.CompareTag("Platform"))
+            {
+                Destroy(gameObject);
+            }
         }
 
-        if (other.gameObject.CompareTag("Platform"))
-        {
-            Destroy(gameObject);
-        }
     }
 
 }
-

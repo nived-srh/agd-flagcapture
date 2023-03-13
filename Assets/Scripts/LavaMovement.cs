@@ -31,11 +31,11 @@ namespace AGD
                 }
 
             }
-            else if (GameManager.instance.state != GameManager.GameState.ENDED)
-            {
-                mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y + 1, mainCamera.transform.position.z), lerpSpeed);
-                transform.position = Vector3.Lerp(transform.position, new Vector3(oldPosition.x, oldPosition.y + 1, oldPosition.z), lerpSpeed);
-            }
+            // else if (GameManager.instance.state != GameManager.GameState.ENDED)
+            // {
+            //     mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y + 1, mainCamera.transform.position.z), lerpSpeed);
+            //     transform.position = Vector3.Lerp(transform.position, new Vector3(oldPosition.x, oldPosition.y + 1, oldPosition.z), lerpSpeed);
+            // }
 
             oldPosition = transform.position;
 
