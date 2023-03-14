@@ -2477,8 +2477,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObject: {fileID: 7443633698626830377, guid: 7772a2a76b6d36a41b64c688464a6e35, type: 3}
   pooledAmount: 5
-  yPositionOffset: 0.5
-  xPositionOffset: 0
+  yPositionOffset: 5
+  xPositionOffset: 2
 --- !u!1 &919342357
 GameObject:
   m_ObjectHideFlags: 0
@@ -3933,8 +3933,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObject: {fileID: 7443633698626830377, guid: 836941ed67734084a953acf42f50968e, type: 3}
   pooledAmount: 5
-  yPositionOffset: 0.5
-  xPositionOffset: 0
+  yPositionOffset: 5
+  xPositionOffset: 2
 --- !u!4 &1712083635
 Transform:
   m_ObjectHideFlags: 0
@@ -4122,8 +4122,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObject: {fileID: 7293107667765164793, guid: fb45ea41323b4ff45b60c2af40ef44ae, type: 3}
   pooledAmount: 5
-  yPositionOffset: 0.5
-  xPositionOffset: 0
+  yPositionOffset: 5
+  xPositionOffset: 2
 --- !u!1001 &1844940503
 PrefabInstance:
   m_ObjectHideFlags: 0
