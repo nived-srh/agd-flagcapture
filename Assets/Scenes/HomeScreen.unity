@@ -765,6 +765,22 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 8632595663981260887, guid: f38346226b0a90444ab7a70e2ebb6f4d, type: 3}
+      propertyPath: m_Size.x
+      value: 0.512
+      objectReference: {fileID: 0}
+    - target: {fileID: 8632595663981260887, guid: f38346226b0a90444ab7a70e2ebb6f4d, type: 3}
+      propertyPath: m_Size.y
+      value: 1.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 8632595663981260887, guid: f38346226b0a90444ab7a70e2ebb6f4d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -18726962, guid: fe8a0250cc18b4b3db326030d67aeee1, type: 3}
+    - target: {fileID: 8632595663981260887, guid: f38346226b0a90444ab7a70e2ebb6f4d, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8632595663981260888, guid: f38346226b0a90444ab7a70e2ebb6f4d, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -817,6 +833,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8632595663981260889, guid: f38346226b0a90444ab7a70e2ebb6f4d, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: efdbb4349137343c79710bffb60551c7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f38346226b0a90444ab7a70e2ebb6f4d, type: 3}
 --- !u!1 &188508581 stripped
@@ -2889,7 +2909,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -5024,7 +5044,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1049702766}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -11.34, y: -14.33, z: -13}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7949,7 +7969,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1678155945}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 11.41, y: -14.33, z: -13}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10409,7 +10429,7 @@ Canvas:
   m_GameObject: {fileID: 2124712589}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
