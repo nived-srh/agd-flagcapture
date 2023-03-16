@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 2805907496160769376}
   - component: {fileID: -8872360783841350726}
   - component: {fileID: 1863293903793848942}
+  - component: {fileID: 6635928002697761319}
   m_Layer: 8
   m_Name: enemy02
   m_TagString: Mob
@@ -156,7 +157,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.6875, y: 0.59375}
+  m_Offset: {x: -0.6875, y: 0.6}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 1, y: 0}
@@ -309,6 +310,18 @@ MonoBehaviour:
   audioSource: {fileID: -8872360783841350726}
   audioClip: {fileID: 8300000, guid: 8b5355ffa70a72b489bfe92841a59e0d, type: 3}
   damage: 5
+--- !u!114 &6635928002697761319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2805907496160769439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff250eadba36eb43b35a1e8f1c813d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2805907496674109683
 GameObject:
   m_ObjectHideFlags: 0

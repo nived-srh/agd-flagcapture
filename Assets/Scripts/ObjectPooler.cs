@@ -10,6 +10,9 @@ namespace AGD
 
         public int pooledAmount;
 
+        public float yPositionOffset = 0f;
+        public float xPositionOffset = 0f;
+
         List<GameObject> pooledObjects;
         // Start is called before the first frame update
         void Start()

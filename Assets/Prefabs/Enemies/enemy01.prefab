@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 8108642075265060158}
   - component: {fileID: -7890655427669864625}
   - component: {fileID: 8825668688645786741}
+  - component: {fileID: 8063545239396702042}
   m_Layer: 8
   m_Name: enemy01
   m_TagString: Mob
@@ -324,6 +325,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   scale: 1
+--- !u!114 &8063545239396702042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8108642075265060145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff250eadba36eb43b35a1e8f1c813d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8108642076690222319
 GameObject:
   m_ObjectHideFlags: 0

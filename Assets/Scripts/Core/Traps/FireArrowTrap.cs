@@ -1,29 +1,33 @@
 using UnityEngine;
 
-public class FireArrowTrap : MonoBehaviour
+namespace AGD
 {
-    public GameObject spritePrefab;
-    public float spawnInterval, spriteSpeed;
-    public Transform shootingPosition;
-
-    private float timer = 0.0f;
-
-    void Update()
+    public class FireArrowTrap : MonoBehaviour
     {
-        // increment timer
-        timer += Time.deltaTime;
+        public GameObject spritePrefab;
+        public float spawnInterval, spriteSpeed;
+        public Transform shootingPosition;
 
-        // spawn sprite every spawnInterval seconds
-        if (timer >= spawnInterval)
+        private float timer = 0.0f;
+
+        void Update()
         {
-            timer = 0.0f;
+            // increment timer
+            timer += Time.deltaTime;
 
-            // instantiate new sprite
-            GameObject sprite = Instantiate(spritePrefab, shootingPosition.position, Quaternion.identity);
+            // spawn sprite every spawnInterval seconds
+            if (timer >= spawnInterval)
+            {
+                timer = 0.0f;
 
-            // set sprite velocity to move to the right
-            Rigidbody2D rb = sprite.GetComponent<Rigidbody2D>();
-            rb.velocity = Vector2.right * spriteSpeed;
+                // instantiate new sprite
+                GameObject sprite = Instantiate(spritePrefab, shootingPosition.position, Quaternion.identity);
+
+                // set sprite velocity to move to the right
+                Rigidbody2D rb = sprite.GetComponent<Rigidbody2D>();
+                rb.velocity = Vector2.right * spriteSpeed;
+            }
         }
     }
+
 }

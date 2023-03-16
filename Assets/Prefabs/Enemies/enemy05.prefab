@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7682891382317580015}
   - component: {fileID: -7952396515467616311}
   - component: {fileID: 1029683649750652328}
+  - component: {fileID: -4380597465961821133}
   m_Layer: 8
   m_Name: enemy05
   m_TagString: Mob
@@ -104,7 +105,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.875, y: 1.6875}
+  m_Offset: {x: -0.875, y: 1.7}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 1, y: 0}
@@ -115,7 +116,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.75, y: 3.375}
+  m_Size: {x: 1.75, y: 3.2}
   m_EdgeRadius: 0
 --- !u!50 &7682891382317580003
 Rigidbody2D:
@@ -278,6 +279,18 @@ MonoBehaviour:
   audioSource: {fileID: -7952396515467616311}
   audioClip: {fileID: 8300000, guid: 6fd879233db1544448977df9667d743e, type: 3}
   damage: 15
+--- !u!114 &-4380597465961821133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7682891382317580000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff250eadba36eb43b35a1e8f1c813d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7682891382895889741
 GameObject:
   m_ObjectHideFlags: 0

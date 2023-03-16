@@ -15,8 +15,10 @@ namespace AGD
         // Start is called before the first frame update
         public GameObject playerStats;
 
+        [SerializeField] private float gravityScale = 2f;
         [SerializeField] private float moveSpeed = 7f;
         [SerializeField] private float jumpForce = 14f;
+        [SerializeField] private float doubleJumpMultiplier = 1f;
 
         [SerializeField] private KeyCode left;
         [SerializeField] private KeyCode right;
@@ -115,12 +117,12 @@ namespace AGD
                 if (leftTimeDelay > 0 && leftTotal == 1 && canDash && Input.GetKeyDown(left))
                 {
                     leftTotal += 1;
-                    StartCoroutine(Dash(-1));
+                    //StartCoroutine(Dash(-1));
                 }
                 else
                 {
                     leftTotal = 1;
-                    leftTimeDelay = 0.5f;
+                    leftTimeDelay = 0.1f;
                     rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
                 }
 
@@ -133,12 +135,12 @@ namespace AGD
                 if (rightTimeDelay > 0 && rightTotal == 1 && canDash && Input.GetKeyDown(right))
                 {
                     rightTotal += 1;
-                    StartCoroutine(Dash(1));
+                    //StartCoroutine(Dash(1));
                 }
                 else
                 {
                     rightTotal = 1;
-                    rightTimeDelay = 0.5f;
+                    rightTimeDelay = 0.1f;
                     rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
                 }
 
@@ -187,13 +189,13 @@ namespace AGD
                 if (jumpTimeDelay > 0 && jumpTotal == 1)
                 {
                     jumpTotal += 1;
-                    rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                    rb.velocity = new Vector2(rb.velocity.x, jumpForce * doubleJumpMultiplier * gravityScale);
                 }
                 else if (isGrounded)
                 {
                     jumpTotal = 1;
                     jumpTimeDelay = 0.5f;
-                    rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                    rb.velocity = new Vector2(rb.velocity.x, jumpForce * gravityScale);
                 }
 
                 if (jumpTimeDelay > 0)
@@ -208,7 +210,7 @@ namespace AGD
 
             if (rightTimeDelay > 0)
             {
-                rightTimeDelay -= 0.5f * Time.deltaTime;
+                rightTimeDelay -= 0.1f * Time.deltaTime;
             }
             else
             {
@@ -217,45 +219,13 @@ namespace AGD
 
             if (leftTimeDelay > 0)
             {
-                leftTimeDelay -= 0.5f * Time.deltaTime;
+                leftTimeDelay -= 0.1f * Time.deltaTime;
             }
             else
             {
                 leftTotal = 0;
             }
-            // if (Input.GetKeyDown(jump) && isGrounded)
-            // {
-            //     rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            // }
-
-            // double jump logic
-            // if (Input.GetKeyDown(jump))
-            // {
-            //     if (isGrounded)
-            //     {
-            //         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            //         jumpTotal += 1;
-            //     }
-            //     if ((jumpTotal == 1) && (jumpTimeDelay < 0.5))
-            //         jumpTimeDelay += Time.deltaTime;
-
-            //     if ((jumpTotal == 1) && (jumpTimeDelay >= 0.5))
-            //     {
-            //         jumpTimeDelay = 0;
-            //         jumpTotal = 0;
-            //     }
-
-            //     if ((jumpTotal == 2))
-            //     {
-            //         jumpTotal = 0;
-            //          if((jumpTimeDelay < 0.5))
-            //             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-
-            //         jumpTimeDelay = 0;
-            //     }
-
-            // }
-
+            
             if (rb.velocity.y > 0.1f)
             {
                 state = MovementState.jumping;
@@ -291,6 +261,8 @@ namespace AGD
         public void TakeDamage(int amount)
         {
             currentHealth -= amount;
+
+            if( currentHealth > 100) currentHealth = 100;
             if (playerStats != null)
             {
                 playerStats.GetComponent<PlayerStats>().setHealth(currentHealth);

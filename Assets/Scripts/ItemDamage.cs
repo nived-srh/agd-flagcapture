@@ -9,19 +9,6 @@ namespace AGD
         public int damage;
         public float knockbackForce = 20f;
         private GameObject player;
-        // public int damage, enemykbForce;
-        // public PlayerController playerController;
-
-        private Dictionary<int, GameObject> playerObjMap;
-        void Start()
-        {
-            playerObjMap = new Dictionary<int, GameObject>();
-            foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
-            {
-                playerObjMap[go.GetInstanceID()] = go;
-            }
-        }
-
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
@@ -31,7 +18,7 @@ namespace AGD
                 player.GetComponent<Player>().TakeDamage(damage);
 
                 Rigidbody2D rb = collision.collider.GetComponent<Rigidbody2D>();
-                if (rb != null)
+                if (rb != null && knockbackForce > 0)
                 {
                     Vector2 velocity = rb.velocity;
                     velocity.y = knockbackForce;
