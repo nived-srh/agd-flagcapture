@@ -3,20 +3,32 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Platform
+  - Terrain
+  - Background
+  - Obstacle
+  - Mob
+  - Clone
+  - flyingenemy_01_projectile
+  - Collectible
+  - Projectile
+  - Trap
+  - Enemy05
+  - Enemy02
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Platform
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Head
+  - Player
+  - Mob
+  - Obstacle
+  - Collectible
+  - Decor
   - 
   - 
   - 
@@ -38,6 +50,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 975377725
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Terrain
+    uniqueID: 1321211047
     locked: 0
